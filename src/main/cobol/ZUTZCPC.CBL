@@ -1,7 +1,7 @@
        IDENTIFICATION DIVISION.
        PROGRAM-ID.  ZUTZCPC.
       *****************************************************************
-      * This work is licensed under a Creative Commons 
+      * This work is licensed under a Creative Commons
       * Attribution-ShareAlike 4.0 International license.
       * See http://creativecommons.org/licenses/by-sa/4.0/.
       *
@@ -15,7 +15,7 @@
       *
       * -- Output --
       * TEST-SOURCE    Copy of ORIGINAL-SOURCE with test code inserted
-      *****************************************************************       
+      *****************************************************************
        ENVIRONMENT DIVISION.
        INPUT-OUTPUT SECTION.
        FILE-CONTROL.
@@ -33,7 +33,7 @@
                ORGANIZATION IS LINE SEQUENTIAL.
            SELECT TEST-CASES ASSIGN TO UTESTS
                FILE STATUS IS TEST-CASES-STATUS
-               ORGANIZATION IS LINE SEQUENTIAL.    
+               ORGANIZATION IS LINE SEQUENTIAL.
        DATA DIVISION.
        FILE SECTION.
        FD  UNIT-TEST-CONFIG
@@ -53,15 +53,15 @@
            05  FILLER REDEFINES SECTION-HEADER.
                10  FILLER                PIC X(03).
                    88  FD-STATEMENT          VALUE 'FD '.
-               10  FILLER                PIC X(07).           
+               10  FILLER                PIC X(07).
            05  FILLER REDEFINES SECTION-HEADER.
                10  PARA-HEADER-AREA      PIC X(04).
-               10  FILLER                PIC X(06).    
+               10  FILLER                PIC X(06).
            05  FILLER                    PIC X(63).
        01  FILLER REDEFINES ORIGINAL-LINE.
            05  FILLER                    PIC X(07).
            05  PARAGRAPH-NAME            PIC X(31).
-           05  FILLER                    PIC X(42).    
+           05  FILLER                    PIC X(42).
 
        FD  TEST-SOURCE
            DATA RECORD IS TEST-LINE.
@@ -72,7 +72,7 @@
            05  FILLER                    PIC X(06).
            05  FILLER                    PIC X(01).
                88  TEST-CASE-COMMENT                VALUE '*'.
-           05  FILLER                    PIC X(249).       
+           05  FILLER                    PIC X(249).
 
        WORKING-STORAGE SECTION.
        01  FILLER PIC X(16) VALUE '******* ZUTZCPC'.
@@ -114,7 +114,7 @@
        01  FILLER.
            05  MOCK-LOOKUP-KEY PIC X(320).
            05  MOCK-LOOKUP-KEYWORDS.
-               10  MOCK-LOOKUP-KEYWORD 
+               10  MOCK-LOOKUP-KEYWORD
                    OCCURS 25 TIMES
                    INDEXED BY MOCK-LOOKUP-IX PIC X(31).
        01  FILLER.
@@ -149,24 +149,24 @@
                    88  MOCK-FILE          VALUE 'FILE'.
                    88  MOCK-PARAGRAPH     VALUE 'PARA'.
                    88  MOCK-SQL           VALUE 'SQL'.
-               10  MOCK-RECORD            PIC X(2048).    
+               10  MOCK-RECORD            PIC X(2048).
                10  MOCK-DATA.
                    15  MOCK-KEY           PIC X(320).
                    15  FILLER             PIC X(2880).
-               10  MOCK-FILE-DATA REDEFINES MOCK-DATA.        
-                   15  MOCK-FILENAME      PIC X(31).    
-                   15  MOCK-OPERATION     PIC X(20).  
+               10  MOCK-FILE-DATA REDEFINES MOCK-DATA.
+                   15  MOCK-FILENAME      PIC X(31).
+                   15  MOCK-OPERATION     PIC X(20).
                    15  MOCK-FILE-STATUS   PIC X(02).
                    15  FILLER             PIC X(3147).
                10  MOCK-CALL-DATA REDEFINES MOCK-DATA.
                    15  MOCK-CALL-TOKENS-KEY PIC X(320).
-                   15  FILLER              PIC X(2880).     
+                   15  FILLER              PIC X(2880).
                10  MOCK-CICS-DATA REDEFINES MOCK-DATA.
                    15  MOCK-CICS-KEYWORDS-KEY PIC X(320).
-                   15  FILLER              PIC X(2880).     
+                   15  FILLER              PIC X(2880).
                10  MOCK-PARA-DATA REDEFINES MOCK-DATA.
                    15  MOCK-PARA-NAME     PIC X(31).
-                   15  FILLER             PIC X(3169).      
+                   15  FILLER             PIC X(3169).
                10  MOCK-SQL-DATA REDEFINES MOCK-DATA.
                    15  FILLER             PIC X(3200).
                10  FILLER REDEFINES MOCK-DATA.
@@ -174,13 +174,13 @@
                    15  MOCK-REPLACEMENT-STMTS.
                        20  MOCK-REPLACEMENT-STMT
                            OCCURS 25 TIMES
-                           INDEXED BY MOCK-REPLACEMENT-STMTS-IX 
-                           PIC X(80).            
+                           INDEXED BY MOCK-REPLACEMENT-STMTS-IX
+                           PIC X(80).
 
       *****************************************************************
       * This area is used to handle file status values for file mocks.
       *****************************************************************
-       01  FILLER.            
+       01  FILLER.
            05  MAX-STATUS-MNEMONICS   PIC 9(02) VALUE 4.
            05  TEMP-SUB               PIC S9(08) COMP.
            05  SAVE-SUB               PIC S9(08) COMP.
@@ -198,7 +198,7 @@
            05  FILLER REDEFINES MOCK-FILE-STATUS-MNEMONICS.
                10  FILLER OCCURS 4 INDEXED BY MOCK-STATUS-IX.
                    15  MOCK-FILE-STATUS-MNEMONIC  PIC X(20).
-                   15  MOCK-FILE-STATUS-VALUE     PIC X(02).        
+                   15  MOCK-FILE-STATUS-VALUE     PIC X(02).
 
       *****************************************************************
       * Specifications for parsing I/O statements from the
@@ -207,7 +207,7 @@
       * VALID-FILE-OPERATION identifies an operation keyword such
       *     as READ or CLOSE.
       * NEXT-TOKEN-TO-GET gives the number of tokens to extract
-      *     after the I/O verb to find the next interesting item in 
+      *     after the I/O verb to find the next interesting item in
       *     the source statement.
       *****************************************************************
        01  MAX-VALID-FILE-OPERATIONS      PIC 9(02) VALUE 6.
@@ -225,19 +225,19 @@
            05  FILLER PIC X(07) VALUE 'WRITE'.
            05  FILLER PIC X(01) VALUE '1'.
        01  FILLER REDEFINES VALID-FILE-OPERATIONS.
-           05  FILLER OCCURS 6 TIMES 
-                      INDEXED BY VALID-FILE-OPERATION-IX. 
+           05  FILLER OCCURS 6 TIMES
+                      INDEXED BY VALID-FILE-OPERATION-IX.
                10  VALID-FILE-OPERATION PIC X(07).
                10  NEXT-TOKEN-TO-GET    PIC 9(01).
-                   
+
        01  FILLER.
-           05  TEMP-STATEMENT               PIC X(80).  
+           05  TEMP-STATEMENT               PIC X(80).
            05  TEMP-VALUE                   PIC X(2048).
            05  SAVE-VALUE                   PIC X(2048).
 
        01  MAX-SAVED-LINES                  PIC S9(02) VALUE 25.
        01  SAVED-LINES.
-           05  SAVED-LINE 
+           05  SAVED-LINE
                OCCURS 25
                INDEXED BY SAVED-LINE-IX     PIC X(80).
 
@@ -260,44 +260,44 @@
                10  DEFAULT-CICS-STATEMENT
                    OCCURS 3
                    INDEXED BY DEFAULT-CICS-STATEMENT-IX
-                   PIC X(80).   
+                   PIC X(80).
 
       *****************************************************************
-      * Accumulate source statements that will be inserted into the 
-      * TEST-SOURCE file. 
+      * Accumulate source statements that will be inserted into the
+      * TEST-SOURCE file.
       *****************************************************************
        01  MAX-GENERATED-STATEMENTS PIC S9(04) VALUE 100.
        01  GENERATED-SOURCE-STATEMENTS.
-           05  GENERATED-SOURCE-STATEMENT 
-               OCCURS 100 
+           05  GENERATED-SOURCE-STATEMENT
+               OCCURS 100
                INDEXED BY STATEMENT-IX   PIC X(160).
-                   
+
       *****************************************************************
-      * Accumulate source statements that will be inserted into the 
-      * UT-INITIALIZE paragraph in the TEST-SOURCE file. 
+      * Accumulate source statements that will be inserted into the
+      * UT-INITIALIZE paragraph in the TEST-SOURCE file.
       *****************************************************************
        01  INITIALIZATION-STATEMENTS.
-           05  INITIALIZATION-STATEMENT 
-               OCCURS 50 
+           05  INITIALIZATION-STATEMENT
+               OCCURS 50
                INDEXED BY INITIALIZATION-IX PIC X(80).
 
       *****************************************************************
-      * Accumulate source statements that will be inserted into the 
-      * UT-BEFORE paragraph in the TEST-SOURCE file. 
+      * Accumulate source statements that will be inserted into the
+      * UT-BEFORE paragraph in the TEST-SOURCE file.
       *****************************************************************
        01  BEFORE-EACH-STATEMENTS.
            05  BEFORE-EACH-STATEMENT
                OCCURS 50
-               INDEXED BY BEFORE-EACH-IX PIC X(80).        
+               INDEXED BY BEFORE-EACH-IX PIC X(80).
 
       *****************************************************************
-      * Accumulate source statements that will be inserted into the 
-      * UT-AFTER paragraph in the TEST-SOURCE file. 
+      * Accumulate source statements that will be inserted into the
+      * UT-AFTER paragraph in the TEST-SOURCE file.
       *****************************************************************
        01  AFTER-EACH-STATEMENTS.
            05  AFTER-EACH-STATEMENT
                OCCURS 50
-               INDEXED BY AFTER-EACH-IX PIC X(80).        
+               INDEXED BY AFTER-EACH-IX PIC X(80).
 
       *****************************************************************
       * Build source statements for the UT-MOCK-INFO table to be
@@ -332,7 +332,7 @@
       *****************************************************************
       * This area is used for parsing keywords out of input records.
       *****************************************************************
-       01  FILLER.    
+       01  FILLER.
            05  RAW-VALUE.
                10  RAW-VALUE-1        PIC X(72).
                10  RAW-VALUE-2        PIC X(1976).
@@ -341,9 +341,9 @@
            05  KEYWORD-MATCHED-INDICATOR PIC X(01) VALUE 'N'.
                88  KEYWORD-MATCHED              VALUE 'Y'.
                88  KEYWORD-NOT-MATCHED          VALUE 'N'.
-           05  WS-CHARS               PIC 9(02) VALUE ZERO.  
+           05  WS-CHARS               PIC 9(02) VALUE ZERO.
            05  WS-NEXT                PIC 9(02) VALUE ZERO.
-           05  WS-STRING-DELIMITER    PIC X(01) VALUE SPACE.  
+           05  WS-STRING-DELIMITER    PIC X(01) VALUE SPACE.
            05  KEYWORD-TO-MATCH       PIC X(20) VALUE SPACES.
            05  KEYWORD-MATCH-LENGTH   PIC 9(02) VALUE ZERO.
            05  KEYWORD-OFFSET         PIC 9(02) VALUE 0.
@@ -359,13 +359,13 @@
                10  FILLER PIC X(20) VALUE 'TESTSUITE'.
                10  FILLER PIC 9(02) VALUE 9.
                10  FILLER PIC X(20) VALUE 'BEFORE-EACH'.
-               10  FILLER PIC 9(02) VALUE 11.     
+               10  FILLER PIC 9(02) VALUE 11.
                10  FILLER PIC X(20) VALUE 'AFTER-EACH'.
-               10  FILLER PIC 9(02) VALUE 10.     
+               10  FILLER PIC 9(02) VALUE 10.
                10  FILLER PIC X(20) VALUE 'MOCK'.
-               10  FILLER PIC 9(02) VALUE 4.     
+               10  FILLER PIC 9(02) VALUE 4.
                10  FILLER PIC X(20) VALUE 'VERIFY'.
-               10  FILLER PIC 9(02) VALUE 6.     
+               10  FILLER PIC 9(02) VALUE 6.
                10  FILLER PIC X(20) VALUE 'IGNORE'.
                10  FILLER PIC 9(02) VALUE 6.
            05  KEYWORDS REDEFINES KEYWORD-VALUES.
@@ -392,7 +392,7 @@
            05  KEYWORDS-TO-IGNORE REDEFINES KEYWORDS-TO-IGNORE-VALUES.
                10  FILLER OCCURS 2 INDEXED BY IGNORE-IX.
                    15  KEYWORD-TO-IGNORE PIC X(80).
-                   15  KEYWORD-TO-IGNORE-LENGTH PIC S9(02).    
+                   15  KEYWORD-TO-IGNORE-LENGTH PIC S9(02).
 
       *****************************************************************
       * Constants
@@ -431,8 +431,8 @@
            05  NUMERIC-KEYWORD              PIC X(07) VALUE 'NUMERIC'.
            05  ONCE-KEYWORD                 PIC X(04) VALUE 'ONCE'.
            05  PARA-KEYWORD                 PIC X(04) VALUE 'PARA'.
-           05  PARAGRAPH-KEYWORD            PIC X(09) VALUE 'PARAGRAPH'.
-           05  PERFORMED-KEYWORD            PIC X(09) VALUE 'PERFORMED'.
+           05  PARAGRAPH-KEYWORD           PIC X(09) VALUE 'PARAGRAPH'.
+           05  PERFORMED-KEYWORD           PIC X(09) VALUE 'PERFORMED'.
            05  SELECT-KEYWORD               PIC X(06) VALUE 'SELECT'.
            05  SQL-KEYWORD                  PIC X(03) VALUE 'SQL'.
            05  TO-KEYWORD                   PIC X(04) VALUE ' TO '.
@@ -452,42 +452,42 @@
            05  COMMENT-MARKER               PIC X(01) VALUE '*'.
            05  PERIOD                       PIC X(01) VALUE '.'.
            05  STATEMENT-SPACER             PIC X(11) VALUE SPACES.
-           05  PARAGRAPH-END-MARKER         PIC X(12) 
+           05  PARAGRAPH-END-MARKER         PIC X(12)
                                             VALUE '           .'.
-           05  BEFORE-PARAGRAPH-HEADER      PIC X(17) 
+           05  BEFORE-PARAGRAPH-HEADER      PIC X(17)
                                             VALUE '       UT-BEFORE.'.
-           05  AFTER-PARAGRAPH-HEADER       PIC X(17) 
+           05  AFTER-PARAGRAPH-HEADER       PIC X(17)
                                             VALUE '       UT-AFTER.'.
-           05  INIT-PARAGRAPH-HEADER        PIC X(22) 
+           05  INIT-PARAGRAPH-HEADER        PIC X(22)
                                         VALUE '       UT-INITIALIZE.'.
-           05  END-PARAGRAPH-HEADER         PIC X(22) 
+           05  END-PARAGRAPH-HEADER         PIC X(22)
                                         VALUE '       UT-END.'.
            05  INCR-TESTCASE-COUNT-STMT     PIC X(80) VALUE
                '           ADD 1 TO UT-TEST-CASE-COUNT'.
            05  INCR-MOCK-ACCESS-COUNT-STMT  PIC X(80) VALUE
                '           ADD 1 TO UT-MOCK-ACCESS-COUNT(UT-MOCK-IX)'.
            05  SET-REVERSE-TRUE-STMT        PIC X(80) VALUE
-               '           SET UT-REVERSE-COMPARE TO TRUE'.    
+               '           SET UT-REVERSE-COMPARE TO TRUE'.
            05  SET-NORMAL-TRUE-STMT        PIC X(80) VALUE
-               '           SET UT-NORMAL-COMPARE TO TRUE'.    
+               '           SET UT-NORMAL-COMPARE TO TRUE'.
            05  SET-MOCK-STMT                PIC X(80) VALUE
-               '           PERFORM UT-SET-MOCK'.    
+               '           PERFORM UT-SET-MOCK'.
            05  ENDIF-STMT                   PIC X(18) VALUE
-               '           END-IF'.    
+               '           END-IF'.
            05  SET-VERIFY-EXACT-STMT        PIC X(80) VALUE
-               '           SET UT-VERIFY-EXACT TO TRUE'.    
+               '           SET UT-VERIFY-EXACT TO TRUE'.
            05  SET-VERIFY-AT-LEAST-STMT     PIC X(80) VALUE
-               '           SET UT-VERIFY-AT-LEAST TO TRUE'.    
+               '           SET UT-VERIFY-AT-LEAST TO TRUE'.
            05  SET-VERIFY-NO-MORE-THAN-STMT PIC X(80) VALUE
-               '           SET UT-VERIFY-NO-MORE-THAN TO TRUE'.     
+               '           SET UT-VERIFY-NO-MORE-THAN TO TRUE'.
            05  SET-FIND-FILE-MOCK-STMT      PIC X(80) VALUE
-               '           SET UT-FIND-FILE-MOCK TO TRUE'.        
+               '           SET UT-FIND-FILE-MOCK TO TRUE'.
            05  SET-FIND-CALL-MOCK-STMT      PIC X(80) VALUE
-               '           SET UT-FIND-CALL-MOCK TO TRUE'.        
+               '           SET UT-FIND-CALL-MOCK TO TRUE'.
            05  SET-FIND-CICS-MOCK-STMT      PIC X(80) VALUE
-               '           SET UT-FIND-CICS-MOCK TO TRUE'.        
+               '           SET UT-FIND-CICS-MOCK TO TRUE'.
            05  SET-FIND-PARA-MOCK-STMT      PIC X(80) VALUE
-               '           SET UT-FIND-PARA-MOCK TO TRUE'.        
+               '           SET UT-FIND-PARA-MOCK TO TRUE'.
 
       *****************************************************************
       * These definitions are used to identify CICS reserved words when
@@ -853,7 +853,7 @@
                10  TEMP-STRING            PIC X(80).
                10  SEARCH-STRING          PIC X(80).
                10  REPLACE-STRING         PIC X(80).
-           05  FILLER USAGE BINARY.    
+           05  FILLER USAGE BINARY.
                10  TARGET-STRING-LENGTH   PIC S9(04).
                10  SEARCH-STRING-LENGTH   PIC S9(04).
                10  REPLACE-STRING-LENGTH  PIC S9(04).
@@ -902,13 +902,13 @@
            05  FILLER                    PIC X VALUE '1'.
                88  VERIFY-EXACT                VALUE '1'.
                88  VERIFY-AT-LEAST             VALUE '2'.
-               88  VERIFY-NO-MORE-THAN         VALUE '3'.    
+               88  VERIFY-NO-MORE-THAN         VALUE '3'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-IGNORE-TESTCASE         VALUE 'N'.
-               88  IGNORE-TESTCASE             VALUE 'Y'.  
+               88  IGNORE-TESTCASE             VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-1ST-TEST-AFTER-IGNORE VALUE 'N'.
-               88  1ST-TEST-AFTER-IGNORE VALUE 'Y'.      
+               88  1ST-TEST-AFTER-IGNORE VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-BEYOND-PROCEDURE-HEADER VALUE 'N'.
                88  BEYOND-PROCEDURE-HEADER     VALUE 'Y'.
@@ -917,40 +917,40 @@
                88  IS-FIRST-TOKEN              VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  MORE-TOKENS                 VALUE 'N'.
-               88  NO-MORE-TOKENS              VALUE 'Y'.    
+               88  NO-MORE-TOKENS              VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
-               88  END-OF-FILE                 VALUE 'Y'.   
+               88  END-OF-FILE                 VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  SPACE-FOUND                 VALUE 'N'.
                88  NON-SPACE-FOUND             VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-END-OF-STATEMENT        VALUE 'N'.
-               88  END-OF-STATEMENT            VALUE 'Y'.  
+               88  END-OF-STATEMENT            VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
-               88  END-OF-TEST-CASES           VALUE 'Y'.  
+               88  END-OF-TEST-CASES           VALUE 'Y'.
            05  COPY-SOURCE-INDICATOR     PIC X VALUE SPACE.
                88  COPY-SOURCE                 VALUE 'N'.
-               88  SUPPRESS-COPY-SOURCE        VALUE 'Y'.   
+               88  SUPPRESS-COPY-SOURCE        VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
-               88  GENERATE-PERFORM-AFTER      VALUE 'Y'.    
+               88  GENERATE-PERFORM-AFTER      VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-SCANNING-TEST-CASES     VALUE 'N'.
-               88  SCANNING-TEST-CASES         VALUE 'Y'.    
+               88  SCANNING-TEST-CASES         VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NOT-SCANNING-ORIGINAL-SOURCE VALUE 'N'.
-               88  SCANNING-ORIGINAL-SOURCE    VALUE 'Y'.    
+               88  SCANNING-ORIGINAL-SOURCE    VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NO-CHECK-FOR-MOCKABLES      VALUE 'N'.
-               88  CHECK-FOR-MOCKABLES         VALUE 'Y'.    
+               88  CHECK-FOR-MOCKABLES         VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  MORE-RESERVED-WORDS         VALUE 'N'.
-               88  NO-MORE-RESERVED-WORDS      VALUE 'Y'.    
+               88  NO-MORE-RESERVED-WORDS      VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NO-SAVE-ORIGINAL-LINES      VALUE 'N'.
-               88  SAVE-ORIGINAL-LINES         VALUE 'Y'.    
+               88  SAVE-ORIGINAL-LINES         VALUE 'Y'.
            05  FILLER                    PIC X VALUE SPACE.
                88  NO-SUPPRESS-TEST-CASE-READ  VALUE 'N'.
-               88  SUPPRESS-TEST-CASE-READ     VALUE 'Y'.    
+               88  SUPPRESS-TEST-CASE-READ     VALUE 'Y'.
            05  FILLER                    PIC X(01) VALUE 'N'.
                88  STRING-FOUND                VALUE 'Y'.
                88  STRING-NOT-FOUND            VALUE 'N'.
@@ -971,24 +971,24 @@
            05  FILLER                    PIC X(17)
                                          VALUE '            COPY '.
            05  WS-COPY-NAME              PIC X(12).
-           05  FILLER                    PIC X(51) VALUE '.'.  
+           05  FILLER                    PIC X(51) VALUE '.'.
 
       *****************************************************************
       * Error messages
       *****************************************************************
        01  ERROR-MESSAGES.
- 
+
            05  ERROR-MESSAGE-LINE              PIC X(80) VALUE SPACES.
 
            05  MSG-ORIG-SOURCE-NOT-FOUND.
-               10  FILLER PIC X(06) VALUE '001-E '.  
+               10  FILLER PIC X(06) VALUE '001-E '.
                10  FILLER PIC X(74) VALUE
                    'ORIGINAL SOURCE FILE SRCPRG NOT FOUND'.
 
            05  MSG-ORIG-SOURCE-UNREADABLE.
                10  FILLER PIC X(06) VALUE '002-E '.
                10  FILLER PIC X(76) VALUE
-               'ORIGINAL SOURCE FILE SRCPRG CAN''T BE OPENED FOR INPUT'.
+              'ORIGINAL SOURCE FILE SRCPRG CAN''T BE OPENED FOR INPUT'.
 
            05  MSG-ORIG-SOURCE-ERROR.
                10  FILLER PIC X(06) VALUE '003-E '.
@@ -1021,48 +1021,48 @@
            05  MSG-MOCK-SYNTAX-1.
                10  FILLER PIC X(06) VALUE '007-E '.
                10  FILLER PIC X(76) VALUE
-               'UNABLE TO PARSE MOCK STATEMENT (UNIT TEST FILE UTESTS)'.    
+               'UNABLE TO PARSE MOCK STATEMENT (UNIT TEST FILE UTESTS)'.
            05  MSG-MOCK-SYNTAX-2              PIC X(80) VALUE
-               '    MOCK FILE [filename]'. 
+               '    MOCK FILE [filename]'.
            05  MSG-MOCK-SYNTAX-3              PIC X(80) VALUE
-               '      ON [operation] RETURN|STATUS [value]'. 
+               '      ON [operation] RETURN|STATUS [value]'.
            05  MSG-MOCK-SYNTAX-4              PIC X(80) VALUE
-               '    END-MOCK'. 
+               '    END-MOCK'.
 
            05  MSG-VERIFY-COUNT PIC S9(02) VALUE 10.
            05  MSG-VERIFY-SYNTAX-ERROR-TEXT.
                10  FILLER.
                    15  FILLER PIC X(06) VALUE '008-E '.
                    15  FILLER PIC X(40) VALUE
-                   'UNABLE TO PARSE VERIFY STATEMENT (UNIT T'.    
+                   'UNABLE TO PARSE VERIFY STATEMENT (UNIT T'.
                    15  FILLER PIC X(34) VALUE
                    'EST FILE UTESTS)'.
                10  FILLER.
                    15  FILLER PIC X(40) VALUE
-                   '    VERIFY mock-type mock-ident-values H'.        
+                   '    VERIFY mock-type mock-ident-values H'.
                    15  FILLER PIC X(40) VALUE
                    'APPENED count TIME[S]'.
                10  FILLER.
                    15  FILLER PIC X(80) VALUE 'Examples:'.
                10  FILLER.
                    15  FILLER PIC X(80) VALUE
-                   '    VERIFY FILE INPUT-FILE OPEN HAPPENED 3 TIMES'.                
+                   '    VERIFY FILE INPUT-FILE OPEN HAPPENED 3 TIMES'.
                10  FILLER.
                    15  FILLER PIC X(80) VALUE
-                   '    VERIFY FILE INPUT-FILE OPEN HAPPENED ONCE'.                
+                   '    VERIFY FILE INPUT-FILE OPEN HAPPENED ONCE'.
                10  FILLER.
                    15  FILLER PIC X(80) VALUE
-                   '    VERIFY FILE INPUT-FILE OPEN NEVER HAPPENED'.     
+                   '    VERIFY FILE INPUT-FILE OPEN NEVER HAPPENED'.
                10  FILLER.
                    15  FILLER PIC X(40) VALUE
                    '    VERIFY FILE INPUT-FILE OPEN HAPPENED'.
                    15  FILLER PIC X(40) VALUE
-                   ' AT LEAST ONCE'.     
+                   ' AT LEAST ONCE'.
                10  FILLER.
                    15  FILLER PIC X(40) VALUE
                    '    VERIFY FILE INPUT-FILE READ HAPPENED'.
                    15  FILLER PIC X(40) VALUE
-                   ' NO MORE THAN 5 TIMES'.     
+                   ' NO MORE THAN 5 TIMES'.
                10  FILLER.
                    15  FILLER PIC X(40) VALUE
                    '    VERIFY CICS READ DATASET(WS-FILENAME'.
@@ -1071,7 +1071,7 @@
                10  FILLER.
                    15  FILLER PIC X(80) VALUE
                    '        HAPPENED ONCE'.
-           05  MSG-VERIFY-SYNTAX-ERRORS 
+           05  MSG-VERIFY-SYNTAX-ERRORS
                REDEFINES MSG-VERIFY-SYNTAX-ERROR-TEXT.
                10  MSG-VERIFY-SYNTAX
                    OCCURS 10
@@ -1081,25 +1081,25 @@
            05  MSG-FILE-MOCK-NOMATCH-1.
                10  FILLER PIC X(06) VALUE '009-W'.
                10  FILLER PIC X(40) VALUE
-                   'A FILE MOCK WAS SPECIFIED THAT DOESN''T M'.     
+                   'A FILE MOCK WAS SPECIFIED THAT DOESN''T M'.
                10  FILLER PIC X(36) VALUE
                    'ATCH ANY SELECT STATEMENT'.
            05  MSG-FILE-MOCK-NOMATCH-2.
                10  FILLER PIC X(15) VALUE '    FILENAME: '.
-               10  MSG-MOCK-NOMATCH-FILENAME PIC X(65).             
+               10  MSG-MOCK-NOMATCH-FILENAME PIC X(65).
            05  MSG-FILE-MOCK-NOMATCH-3.
                10  FILLER PIC X(15) VALUE '    OPERATION: '.
-               10  MSG-MOCK-MOMATCH-OPERATION PIC X(64).     
+               10  MSG-MOCK-MOMATCH-OPERATION PIC X(64).
 
            05  MSG-CONFIG-FILE-NOT-FOUND.
                10  FILLER PIC X(06) VALUE '010-E '.
                10  FILLER PIC X(74) VALUE
-               'CONFIGURATION FILE UTSTCFG NOT FOUND'.            
+               'CONFIGURATION FILE UTSTCFG NOT FOUND'.
 
            05  MSG-CONFIG-FILE-UNREADABLE.
                10  FILLER PIC X(06) VALUE '011-E '.
                10  FILLER PIC X(74) VALUE
-               'CONFIGURATION FILE UTSTCFG CAN''T BE OPENED FOR INPUT'.            
+               'CONFIGURATION FILE UTSTCFG CAN''T BE OPENED FOR INPUT'.
 
            05  MSG-CONFIG-FILE-ERROR.
                10  FILLER PIC X(06) VALUE '012-E '.
@@ -1129,16 +1129,16 @@
                10  MSG-TEST-SOURCE-OPERATION PIC X(04).
                10  FILLER                   PIC X(31) VALUE SPACES.
 
-           05  MSG-EXPECT-SYNTAX-1.    
+           05  MSG-EXPECT-SYNTAX-1.
                10  FILLER PIC X(06) VALUE '016-E '.
                10  FILLER PIC X(40) VALUE
-               'UNABLE TO PARSE EXPECT STATEMENT (UNIT T'.    
+               'UNABLE TO PARSE EXPECT STATEMENT (UNIT T'.
                10  FILLER PIC X(36) VALUE
                'EST FILE UTESTS)'.
            05  MSG-EXPECT-SYNTAX-2.
                10  FILLER PIC X(80) VALUE 'SYNTAX IS:'.
            05  MSG-EXPECT-SYNTAX-3.
-               10  FILLER PIC X(80) VALUE 
+               10  FILLER PIC X(80) VALUE
                '    EXPECT [actual] TO BE [expected]'.
 
        LINKAGE SECTION.
@@ -1194,8 +1194,8 @@
                WHEN CHECK-FOR-MOCKABLES
                     PERFORM 3100-CHECK-FOR-MOCKABLES
                WHEN OTHER
-                    PERFORM 9460-COPY-ORIGINAL-LINE         
-           END-EVALUATE         
+                    PERFORM 9460-COPY-ORIGINAL-LINE
+           END-EVALUATE
            .
 
        2600-IS-THIS-A-SELECT-STMT.
@@ -1211,7 +1211,7 @@
 
            IF WS-CHARS IS LESS THAN KEYWORD-END
                SET SELECT-STATEMENT TO TRUE
-           END-IF    
+           END-IF
            .
 
        2700-INSERT-WORKING-STG-CODE.
@@ -1222,7 +1222,7 @@
            PERFORM 9460-COPY-ORIGINAL-LINE
            MOVE WS-WORKING-STORAGE-COPY TO WS-COPY-NAME
            PERFORM 9450-WRITE-COPY-LINE
-           .    
+           .
 
        2800-PROCESS-SELECT.
       *****************************************************************
@@ -1235,7 +1235,7 @@
            MOVE 14 TO KEYWORD-OFFSET
            MOVE KEYWORD-END TO KEYWORD-SEARCH-LIMIT
 
-      *    Next token is the internal filename in a SELECT statement    
+      *    Next token is the internal filename in a SELECT statement
 
            PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
 
@@ -1246,10 +1246,10 @@
 
       *    Gen code in TEST-SOURCE to manage the filename at runtime
 
-           SET INITIALIZATION-IX UP BY 1    
+           SET INITIALIZATION-IX UP BY 1
            MOVE '           ADD 1 TO UT-FILE-COUNT'
                TO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
-           SET INITIALIZATION-IX UP BY 1    
+           SET INITIALIZATION-IX UP BY 1
            MOVE '           SET UT-FILE-IX TO UT-FILE-COUNT'
                TO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
 
@@ -1260,10 +1260,10 @@
                STATEMENT-SPACER   DELIMITED BY SIZE
                MOVE-VERB          DELIMITED BY SIZE
                QUOTED-VALUE       DELIMITED BY SPACE
-               TO-KEYWORD         DELIMITED BY SIZE  
+               TO-KEYWORD         DELIMITED BY SIZE
                'UT-INTERNAL-FILENAME(UT-FILE-IX)' DELIMITED BY SIZE
                INTO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
-           END-STRING 
+           END-STRING
 
            SET TOKEN-IX UP BY 1
 
@@ -1277,26 +1277,26 @@
                ELSE
                    PERFORM 7500-INIT-KEYWORD-SEARCH
                    MOVE 'FILE STATUS' TO KEYWORD-TO-MATCH
-                   MOVE 11 TO KEYWORD-MATCH-LENGTH   
+                   MOVE 11 TO KEYWORD-MATCH-LENGTH
                    PERFORM 7400-MATCH-KEYWORD
                    IF KEYWORD-MATCHED
                        COMPUTE KEYWORD-OFFSET =
                            KEYWORD-OFFSET + 11
-                       END-COMPUTE   
+                       END-COMPUTE
                        COMPUTE KEYWORD-SEARCH-LIMIT =
                            KEYWORD-END - KEYWORD-OFFSET
-                       END-COMPUTE     
+                       END-COMPUTE
                        PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
                        IF TOKEN(TOKEN-IX) IS EQUAL TO 'IS'
                            PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
                        END-IF
-                       PERFORM 7800-STRIP-PERIOD   
+                       PERFORM 7800-STRIP-PERIOD
                        MOVE TOKEN(TOKEN-IX) TO RAW-VALUE
                        PERFORM 7950-ENCLOSE-IN-QUOTES
 
       * Save FILE STATUS field name for future reference during parsing
 
-                       MOVE TOKEN(TOKEN-IX) 
+                       MOVE TOKEN(TOKEN-IX)
                             TO FILE-STATUS-FIELD-NAME(FILE-IX)
 
       * Gen code in TEST-SOURCE to use the field name at runtime
@@ -1309,8 +1309,9 @@
                            TO-KEYWORD           DELIMITED BY SIZE
                           INTO INITIALIZATION-STATEMENT
                                (INITIALIZATION-IX)
-                       END-STRING                         
+                       END-STRING
                        SET INITIALIZATION-IX UP BY 1
+
                        STRING
                            STATEMENT-SPACER     DELIMITED BY SIZE
                            STATEMENT-SPACER     DELIMITED BY SIZE
@@ -1318,19 +1319,19 @@
                                                 DELIMITED BY SIZE
                            INTO INITIALIZATION-STATEMENT
                                 (INITIALIZATION-IX)
-                       END-STRING                         
+                       END-STRING
                    ELSE
                        PERFORM 9240-READ-AND-COPY-ORIG-SOURCE
                        MOVE ORIGINAL-LINE TO LINE-TO-PARSE
                    END-IF
-               END-IF                               
+               END-IF
            END-PERFORM
-           SET FILE-IX UP BY 1      
+           SET FILE-IX UP BY 1
            .
 
        2900-PROCESS-FD.
       *****************************************************************
-      * Parse an FD and its first 01 level item from the ORIGINAL-SOURCE 
+      * Parse an FD and its first 01 level item from the ORIGINAL-SOURCE
       * file to capture information that will be needed if the user has
       * specified a MOCK for the file.
       *****************************************************************
@@ -1339,19 +1340,19 @@
            MOVE 11 TO KEYWORD-OFFSET
            MOVE KEYWORD-END TO KEYWORD-SEARCH-LIMIT
 
-      * Look for file name to match with the SELECT file name     
+      * Look for file name to match with the SELECT file name
 
            PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
            PERFORM 7800-STRIP-PERIOD
 
       * Find the entry in the file information table for this file
 
-           PERFORM VARYING FILE-IX FROM 1 BY 1 
+           PERFORM VARYING FILE-IX FROM 1 BY 1
                UNTIL FILE-IX GREATER THAN MAX-FILES
                OR INTERNAL-FILENAME(FILE-IX) EQUAL TOKEN(TOKEN-IX)
-           END-PERFORM           
+           END-PERFORM
 
-      * Generate code in TEST-SOURCE to position the indices into the 
+      * Generate code in TEST-SOURCE to position the indices into the
       * tables of mock and file information.
 
            SET INITIALIZATION-IX UP BY 1
@@ -1360,19 +1361,19 @@
 
            PERFORM 6300-GEN-SET-FILENAME-TO-FIND
            SET INITIALIZATION-IX UP BY 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
 
            PERFORM 6100-GEN-LOOKUP-MOCK
            SET INITIALIZATION-IX UP BY 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
 
            PERFORM 6200-GEN-LOOKUP-FILE
            SET INITIALIZATION-IX UP BY 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
-           
+
       * Find the name of the default record field on the next line
 
            PERFORM 9240-READ-AND-COPY-ORIG-SOURCE
@@ -1383,8 +1384,8 @@
            PERFORM 7800-STRIP-PERIOD
 
       * Save the field name for future reference during parsing
-      
-           MOVE TOKEN(TOKEN-IX) TO RECORD-FIELD-NAME(FILE-IX)     
+
+           MOVE TOKEN(TOKEN-IX) TO RECORD-FIELD-NAME(FILE-IX)
 
       * Generate code in TEST-SOURCE to set the field name on the mock
 
@@ -1399,7 +1400,7 @@
                TO-KEYWORD              DELIMITED BY SIZE
                'UT-RECORD-FIELD-NAME(UT-FILE-IX)' DELIMITED BY SIZE
                INTO INITIALIZATION-STATEMENT(INITIALIZATION-IX)
-           END-STRING               
+           END-STRING
            .
 
        3000-INSERT-PROC-DIV-CODE.
@@ -1408,18 +1409,18 @@
       * top of the PROCEDURE DIVISION.
       *****************************************************************
            PERFORM 9460-COPY-ORIGINAL-LINE
-           PERFORM 4000-INSERT-TEST-CODE 
+           PERFORM 4000-INSERT-TEST-CODE
 
       * Insert a call to UT-AFTER (AFTER-EACH code) after the last
       * test case.
 
            INITIALIZE GENERATED-SOURCE-STATEMENTS
            SET STATEMENT-IX TO 1
-           MOVE 'PERFORM UT-AFTER' TO        
+           MOVE 'PERFORM UT-AFTER' TO
                GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
            PERFORM 9440-WRITE-GENERATED-STMTS
-                   
+
       * Insert a COPY for boilerplate unit test code and write
       * generated paragraphs just after it.
 
@@ -1456,13 +1457,13 @@
                        SET COPY-SOURCE TO TRUE
                    END-IF
                END-IF
-           END-IF        
+           END-IF
 
            IF SUPPRESS-COPY-SOURCE
                SET COPY-SOURCE TO TRUE
            ELSE
                PERFORM 9460-COPY-ORIGINAL-LINE
-           END-IF        
+           END-IF
            .
 
        3200-CHECK-FOR-IO-STATEMENT.
@@ -1479,13 +1480,13 @@
            PERFORM VARYING VALID-FILE-OPERATION-IX FROM 1 BY 1
                    UNTIL VALID-FILE-OPERATION-IX IS GREATER THAN
                          MAX-VALID-FILE-OPERATIONS
-                      OR KEYWORD-MATCHED   
+                      OR KEYWORD-MATCHED
                IF TOKEN(TOKEN-IX) IS EQUAL TO
                        VALID-FILE-OPERATION(VALID-FILE-OPERATION-IX)
-                   SET KEYWORD-MATCHED TO TRUE   
+                   SET KEYWORD-MATCHED TO TRUE
       * Keep index set to this entry for subsequent processing
-                   SET VALID-FILE-OPERATION-IX DOWN BY 1 
-               END-IF                    
+                   SET VALID-FILE-OPERATION-IX DOWN BY 1
+               END-IF
            END-PERFORM
            .
 
@@ -1498,7 +1499,7 @@
 
            SET TOKEN-IX UP BY 1
 
-           PERFORM 
+           PERFORM
                NEXT-TOKEN-TO-GET(VALID-FILE-OPERATION-IX) TIMES
                PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
            END-PERFORM
@@ -1507,8 +1508,8 @@
            IF MOCK-MATCHED
                PERFORM 3260-FIND-CORR-FILE-INFO
            ELSE
-               SET COPY-SOURCE TO TRUE    
-           END-IF        
+               SET COPY-SOURCE TO TRUE
+           END-IF
            .
 
        3240-FIND-CORR-FILE-MOCK.
@@ -1521,14 +1522,14 @@
                    UNTIL MOCK-IX IS GREATER THAN MAX-MOCKS
                       OR MOCK-MATCHED
 
-               IF MOCK-FILE(MOCK-IX) 
+               IF MOCK-FILE(MOCK-IX)
                AND MOCK-OPERATION(MOCK-IX) EQUAL TOKEN(1)
                AND MOCK-FILENAME(MOCK-IX) EQUAL TOKEN(2)
                    SET MOCK-MATCHED TO TRUE
                ELSE
                    SET COPY-SOURCE TO TRUE
-               END-IF               
-           END-PERFORM            
+               END-IF
+           END-PERFORM
            SET MOCK-IX DOWN BY 1
            .
 
@@ -1545,14 +1546,14 @@
                PERFORM 3300-GEN-MOCK-REPLACEMENT-STMTS
            ELSE
                SET COPY-SOURCE TO TRUE
-               MOVE MOCK-FILENAME(MOCK-IX) 
+               MOVE MOCK-FILENAME(MOCK-IX)
                     TO MSG-MOCK-NOMATCH-FILENAME
                MOVE MOCK-OPERATION(MOCK-IX)
                     TO MSG-MOCK-MOMATCH-OPERATION
                DISPLAY THIS-PROGRAM MSG-FILE-MOCK-NOMATCH-1
                DISPLAY THIS-PROGRAM MSG-FILE-MOCK-NOMATCH-2
                DISPLAY THIS-PROGRAM MSG-FILE-MOCK-NOMATCH-3
-           END-IF        
+           END-IF
            .
 
        3300-GEN-MOCK-REPLACEMENT-STMTS.
@@ -1564,31 +1565,31 @@
 
            PERFORM 6300-GEN-SET-FILENAME-TO-FIND
            SET STATEMENT-IX TO 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           
+
            PERFORM 6100-GEN-LOOKUP-MOCK
            SET STATEMENT-IX UP BY 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            SET STATEMENT-IX UP BY 1
-           MOVE '           IF UT-MOCK-FOUND' 
+           MOVE '           IF UT-MOCK-FOUND'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            SET STATEMENT-IX UP BY 1
            MOVE INCR-MOCK-ACCESS-COUNT-STMT
-               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX) 
+               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            PERFORM 6300-GEN-SET-FILENAME-TO-FIND
            SET STATEMENT-IX UP BY 1
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
-           PERFORM 6200-GEN-LOOKUP-FILE    
+           PERFORM 6200-GEN-LOOKUP-FILE
            SET STATEMENT-IX UP BY 1
-           MOVE TEMP-STATEMENT 
-               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)           
+           MOVE TEMP-STATEMENT
+               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            SET STATEMENT-IX UP BY 1
            MOVE '            IF UT-MOCK-RECORD(UT-MOCK-IX)'
@@ -1610,7 +1611,7 @@
            END-STRING
 
            SET STATEMENT-IX UP BY 1
-           MOVE ENDIF-STMT             
+           MOVE ENDIF-STMT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            SET STATEMENT-IX UP BY 1
@@ -1633,7 +1634,7 @@
            END-STRING
 
            SET STATEMENT-IX UP BY 1
-           MOVE ENDIF-STMT 
+           MOVE ENDIF-STMT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            PERFORM 9465-COMMENT-ORIGINAL-LINE
@@ -1664,8 +1665,8 @@
                        PERFORM 7900-STRIP-QUOTES
                        MOVE TOKEN(TOKEN-IX) TO MOCK-LOOKUP-KEYWORD
                                                (MOCK-LOOKUP-IX)
-                       SET MOCK-LOOKUP-IX UP BY 1                        
-                   END-IF    
+                       SET MOCK-LOOKUP-IX UP BY 1
+                   END-IF
                END-PERFORM
 
                PERFORM 5090-STRINGIFY-KEYWORDS
@@ -1674,7 +1675,7 @@
                    SET COMMENT-THE-LINES TO TRUE
                ELSE
                    SET COPY-THE-LINES TO TRUE
-               END-IF        
+               END-IF
                PERFORM 3960-COPY-OR-COMMENT-LINES
                PERFORM 6030-WRITE-GENERATED-STMTS
            END-IF
@@ -1692,7 +1693,7 @@
 
                PERFORM 7500-INIT-KEYWORD-SEARCH
                MOVE EXEC-KEYWORD(EXEC-KEYWORD-IX) TO KEYWORD-TO-MATCH
-               MOVE EXEC-KEYWORD-LENGTH(EXEC-KEYWORD-IX) 
+               MOVE EXEC-KEYWORD-LENGTH(EXEC-KEYWORD-IX)
                     TO KEYWORD-MATCH-LENGTH
                PERFORM 7400-MATCH-KEYWORD
            END-PERFORM
@@ -1718,39 +1719,39 @@
                         CONTINUE
                END-EVALUATE
            ELSE
-               SET MOCKABLE-NOT-FOUND TO TRUE    
-           END-IF              
-           SET NO-SAVE-ORIGINAL-LINES TO TRUE       
+               SET MOCKABLE-NOT-FOUND TO TRUE
+           END-IF
+           SET NO-SAVE-ORIGINAL-LINES TO TRUE
            .
-        
-       3600-PROCESS-CICS-COMMAND.    
+
+       3600-PROCESS-CICS-COMMAND.
       *****************************************************************
       * EXEC CICS was found. See the command is to be mocked, comment
-      * out the original lines and substitute the code specified in 
+      * out the original lines and substitute the code specified in
       * the mock. Otherwise, copy the original lines.
       *****************************************************************
 
            SET MOCK-LOOKUP-IX TO 1
            MOVE SPACES TO MOCK-LOOKUP-KEY
            MOVE SPACES TO MOCK-LOOKUP-KEYWORDS
-           PERFORM VARYING KEYWORD-OFFSET 
+           PERFORM VARYING KEYWORD-OFFSET
                    FROM KEYWORD-OFFSET BY 1
                    UNTIL TOKEN(TOKEN-IX) IS EQUAL TO END-EXEC-KEYWORD
 
                PERFORM 7200-NEXT-TOKEN-ORIG-SOURCE
                IF TOKEN(TOKEN-IX) IS EQUAL TO END-EXEC-KEYWORD
                    CONTINUE
-               ELSE    
+               ELSE
                    MOVE TOKEN(TOKEN-IX) TO CANDIDATE-TOKEN
                    INSPECT CANDIDATE-TOKEN REPLACING ALL '(' BY SPACE
                    MOVE SPACES TO CANDIDATE-CICS-RESERVED-WORD
-                   STRING CANDIDATE-TOKEN 
+                   STRING CANDIDATE-TOKEN
                        DELIMITED BY SPACE
                        INTO CANDIDATE-CICS-RESERVED-WORD
                    END-STRING
                    MOVE TOKEN(TOKEN-IX) TO MOCK-LOOKUP-KEYWORD
                            (MOCK-LOOKUP-IX)
-                   SET MOCK-LOOKUP-IX UP BY 1 
+                   SET MOCK-LOOKUP-IX UP BY 1
                END-IF
            END-PERFORM
 
@@ -1760,14 +1761,14 @@
                SET COMMENT-THE-LINES TO TRUE
            ELSE
                SET COPY-THE-LINES TO TRUE
-           END-IF        
+           END-IF
            PERFORM 3960-COPY-OR-COMMENT-LINES
            PERFORM 6030-WRITE-GENERATED-STMTS
            .
 
        3700-CHECK-FOR-PARA-HEADER.
       *****************************************************************
-      * See if we have read a paragraph header line from 
+      * See if we have read a paragraph header line from
       * ORIGINAL-SOURCE.
       *****************************************************************
           SET MOCKABLE-NOT-FOUND TO TRUE
@@ -1776,7 +1777,7 @@
            ELSE
                PERFORM 7640-SET-SAVE-ORIG-LINES
                PERFORM 3720-CHECK-FOR-MOCKED-PARA
-           END-IF        
+           END-IF
            .
 
        3720-CHECK-FOR-MOCKED-PARA.
@@ -1793,10 +1794,10 @@
                SET MOCKABLE-NOT-FOUND TO TRUE
                SET COPY-THE-LINES TO TRUE
                PERFORM 3960-COPY-OR-COMMENT-LINES
-           END-IF        
+           END-IF
            .
 
-       3740-PROCESS-MOCKED-PARA.      
+       3740-PROCESS-MOCKED-PARA.
       *****************************************************************
       * Comment the original source lines and substitute the source
       * lines specified for this mocked paragraph.
@@ -1818,9 +1819,9 @@
                       OR PARA-HEADER-AREA NOT EQUAL SPACES
                       OR ORIGINAL-LINE(1:12) EQUAL PARAGRAPH-END-MARKER
                PERFORM 9250-READ-ORIGINAL-SOURCE
-           END-PERFORM           
+           END-PERFORM
 
-      * Comment out the original behavior of the mocked paragraph.     
+      * Comment out the original behavior of the mocked paragraph.
 
            SET COMMENT-THE-LINES TO TRUE
            PERFORM 3960-COPY-OR-COMMENT-LINES
@@ -1834,16 +1835,16 @@
 
            IF PARA-MATCHED
                SET MOCKABLE-FOUND TO TRUE
-           END-IF    
+           END-IF
            .
 
-       3800-PROCESS-SQL-COMMAND.    
+       3800-PROCESS-SQL-COMMAND.
       *****************************************************************
       * EXEC SQL was found. Future implementation.
       *****************************************************************
            .
 
-       3900-LOOKUP-MOCK.    
+       3900-LOOKUP-MOCK.
       *****************************************************************
       * Find the mock that matches MOCK-LOOKUP-KEY, if any.
       *****************************************************************
@@ -1854,8 +1855,8 @@
                       OR MOCK-MATCHED
                IF MOCK-KEY(MOCK-IX) EQUAL MOCK-LOOKUP-KEY
                    SET MOCK-MATCHED TO TRUE
-               END-IF           
-           END-PERFORM           
+               END-IF
+           END-PERFORM
            SET MOCK-IX DOWN BY 1
            .
 
@@ -1866,18 +1867,18 @@
       *****************************************************************
            SET NO-SAVE-ORIGINAL-LINES TO TRUE
            PERFORM VARYING SAVED-LINE-IX FROM 1 BY 1
-                   UNTIL SAVED-LINE-IX 
+                   UNTIL SAVED-LINE-IX
                          IS GREATER THAN MAX-SAVED-LINES
-                      OR SAVED-LINE(SAVED-LINE-IX)   
+                      OR SAVED-LINE(SAVED-LINE-IX)
                          IS EQUAL TO SPACES
                MOVE SAVED-LINE(SAVED-LINE-IX) TO ORIGINAL-LINE
                IF COMMENT-THE-LINES
                    PERFORM 9465-COMMENT-ORIGINAL-LINE
                ELSE
                    PERFORM 9460-COPY-ORIGINAL-LINE
-               END-IF        
-           END-PERFORM    
-           .    
+               END-IF
+           END-PERFORM
+           .
 
       *****************************************************************
       * 4xxx- 5xxx-
@@ -1888,11 +1889,11 @@
        4000-INSERT-TEST-CODE.
       *****************************************************************
       * Input processing loop for the TEST-CASES file.
-      ***************************************************************** 
+      *****************************************************************
            PERFORM 4050-INSERT-PERFORM-INIT
            PERFORM 9310-OPEN-TEST-CASES
            PERFORM 4100-PARSE-TEST-CASES
-               UNTIL NOT TEST-CASES-STATUS-OK 
+               UNTIL NOT TEST-CASES-STATUS-OK
            PERFORM 9390-CLOSE-TEST-CASES
            .
 
@@ -1903,31 +1904,31 @@
       *****************************************************************
            MOVE '           PERFORM UT-INITIALIZE' TO TEST-LINE
            PERFORM 9420-WRITE-TEST-LINE
-           . 
+           .
 
        4100-PARSE-TEST-CASES.
       *****************************************************************
-      * Copy unit test code from TEST-CASES to TEST-SOURCE, parsing 
-      * keywords and substituting appropriate code. 
-      ***************************************************************** 
+      * Copy unit test code from TEST-CASES to TEST-SOURCE, parsing
+      * keywords and substituting appropriate code.
+      *****************************************************************
            PERFORM 9350-READ-TEST-CASES
            IF TEST-CASES-STATUS-OK
                PERFORM 4200-PROCESS-KEYWORDS
                IF SUPPRESS-COPY-SOURCE OR IGNORE-TESTCASE
                    CONTINUE
-               ELSE    
+               ELSE
                    MOVE TEST-CASE-LINE TO TEST-LINE
                    PERFORM 9420-WRITE-TEST-LINE
-               END-IF                
+               END-IF
            END-IF
-           .    
+           .
 
        4200-PROCESS-KEYWORDS.
       *****************************************************************
       * Look for keywords specific to this unit testing framework and
       * substitute valid COBOL source statements corresponding to the
       * specifications.
-      ***************************************************************** 
+      *****************************************************************
            INITIALIZE COPY-SOURCE-INDICATOR
            PERFORM VARYING KEYWORD-IX FROM 1 BY 1
                    UNTIL KEYWORD-IX IS GREATER THAN MAX-KEYWORDS
@@ -1952,51 +1953,51 @@
                        WHEN TOKEN(1) IS EQUAL TO 'EXPECT'
                             IF IGNORE-TESTCASE
                                 SET SUPPRESS-COPY-SOURCE TO TRUE
-                            ELSE    
+                            ELSE
                                 PERFORM 4300-KEYWORD-EXPECT
                             END-IF
                        WHEN TOKEN(1) IS EQUAL TO 'VERIFY'
                             IF IGNORE-TESTCASE
                                 SET SUPPRESS-COPY-SOURCE TO TRUE
-                            ELSE    
-                                PERFORM 5000-KEYWORD-VERIFY  
+                            ELSE
+                                PERFORM 5000-KEYWORD-VERIFY
                             END-IF
                        WHEN TOKEN(1) IS EQUAL TO 'IGNORE'
-                            SET IGNORE-TESTCASE TO TRUE     
-                            SET 1ST-TEST-AFTER-IGNORE TO TRUE 
-                            SET SUPPRESS-COPY-SOURCE TO TRUE 
+                            SET IGNORE-TESTCASE TO TRUE
+                            SET 1ST-TEST-AFTER-IGNORE TO TRUE
+                            SET SUPPRESS-COPY-SOURCE TO TRUE
                        WHEN TOKEN(1) IS EQUAL TO 'TESTCASE'
                             IF IGNORE-TESTCASE
                                 IF 1ST-TEST-AFTER-IGNORE
                                     SET NOT-1ST-TEST-AFTER-IGNORE
                                         TO TRUE
-                                ELSE        
+                                ELSE
                                     SET NOT-IGNORE-TESTCASE TO TRUE
                                 PERFORM 4400-KEYWORD-TESTCASE
-                                END-IF    
-                            ELSE    
+                                END-IF
+                            ELSE
                                 PERFORM 4400-KEYWORD-TESTCASE
-                            END-IF      
+                            END-IF
                        WHEN TOKEN(1) IS EQUAL TO 'TESTSUITE'
-                            PERFORM 4500-KEYWORD-TESTSUITE        
+                            PERFORM 4500-KEYWORD-TESTSUITE
                        WHEN TOKEN(1) IS EQUAL TO 'BEFORE-EACH'
-                            PERFORM 4600-KEYWORD-BEFORE       
+                            PERFORM 4600-KEYWORD-BEFORE
                        WHEN TOKEN(1) IS EQUAL TO 'AFTER-EACH'
-                            PERFORM 4700-KEYWORD-AFTER      
+                            PERFORM 4700-KEYWORD-AFTER
                        WHEN TOKEN(1) IS EQUAL TO 'MOCK'
                             IF IGNORE-TESTCASE
                                 SET SUPPRESS-COPY-SOURCE TO TRUE
-                            ELSE    
-                                PERFORM 4800-KEYWORD-MOCK      
+                            ELSE
+                                PERFORM 4800-KEYWORD-MOCK
                             END-IF
                    END-EVALUATE
-               END-IF   
+               END-IF
            END-PERFORM
-           .    
+           .
 
        4300-KEYWORD-EXPECT.
       *****************************************************************
-      * EXPECT keyword was found. 
+      * EXPECT keyword was found.
       *
       * Generate assertion code in TEST-SOURCE.
       *
@@ -2008,10 +2009,10 @@
            PERFORM 7980-CHECK-FOR-IGNORE
            IF STRING-NOT-FOUND
                PERFORM 4310-KEYWORD-EXPECT
-           END-IF    
+           END-IF
            .
 
-       4310-KEYWORD-EXPECT.    
+       4310-KEYWORD-EXPECT.
            PERFORM 7600-ADJUST-OFFSETS
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
 
@@ -2022,7 +2023,7 @@
            PERFORM 7400-MATCH-KEYWORD
            IF KEYWORD-MATCHED
                SET REVERSE-COMPARE TO TRUE
-           ELSE    
+           ELSE
                SET NORMAL-COMPARE TO TRUE
                MOVE TEMP-SUB TO KEYWORD-OFFSET
                SUBTRACT 6 FROM KEYWORD-OFFSET
@@ -2042,10 +2043,10 @@
            .
 
        4320-EXPECT-EQUALITY.
-      *****************************************************************     
+      *****************************************************************
       * Generate code in TEST-SOURCE to assert expected and actual
       * results are equal.
-      *****************************************************************     
+      *****************************************************************
            SET DATATYPE-X TO TRUE
            SET TOKEN-IX UP BY 1
            MOVE KEYWORD-TO-MATCH TO TOKEN(TOKEN-IX)
@@ -2058,13 +2059,13 @@
                SET TOKEN-IX UP BY 1
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
                SET DATATYPE-9 TO TRUE
-           END-IF    
+           END-IF
 
            IF TOKEN(4) IS EQUAL TO TRUE-KEYWORD OR FALSE-KEYWORD
                SET TOKEN-IX UP BY 1
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
                SET DATATYPE-88 TO TRUE
-           END-IF    
+           END-IF
 
            INITIALIZE GENERATED-SOURCE-STATEMENTS
            SET STATEMENT-IX TO 1
@@ -2079,10 +2080,10 @@
                WHEN DATATYPE-9
                     PERFORM 4330-GENERATE-NUMERIC-COMPARE
                WHEN DATATYPE-88
-                    PERFORM 4340-GENERATE-88-COMPARE     
+                    PERFORM 4340-GENERATE-88-COMPARE
                WHEN OTHER
                     PERFORM 4350-GENERATE-PIC-X-COMPARE
-           END-EVALUATE              
+           END-EVALUATE
 
            PERFORM 9440-WRITE-GENERATED-STMTS
            SET SUPPRESS-COPY-SOURCE TO TRUE
@@ -2098,7 +2099,7 @@
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
            SET STATEMENT-IX UP BY 1
-           STRING 
+           STRING
                MOVE-VERB             DELIMITED BY SIZE
                TOKEN(5)              DELIMITED BY SPACE
                TO-KEYWORD            DELIMITED BY SIZE
@@ -2107,7 +2108,7 @@
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
            SET STATEMENT-IX UP BY 1
-           STRING 
+           STRING
                SET-VERB              DELIMITED BY SIZE
                ' UT-COMPARE-NUMERIC' DELIMITED BY SIZE
                TO-KEYWORD            DELIMITED BY SIZE
@@ -2134,7 +2135,7 @@
            END-STRING
            SET STATEMENT-IX UP BY 1
 
-           STRING 
+           STRING
                SET-VERB              DELIMITED BY SIZE
                ' UT-COMPARE-DEFAULT' DELIMITED BY SIZE
                TO-KEYWORD            DELIMITED BY SIZE
@@ -2161,7 +2162,7 @@
                MOVE-VERB            DELIMITED BY SIZE
                " 'TRUE' "           DELIMITED BY SIZE
                TO-KEYWORD           DELIMITED BY SIZE
-               'UT-ACTUAL'          DELIMITED BY SIZE               
+               'UT-ACTUAL'          DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
@@ -2180,7 +2181,7 @@
                MOVE-VERB            DELIMITED BY SIZE
                " 'FALSE' "           DELIMITED BY SIZE
                TO-KEYWORD           DELIMITED BY SIZE
-               'UT-ACTUAL'          DELIMITED BY SIZE               
+               'UT-ACTUAL'          DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
@@ -2196,7 +2197,7 @@
 
            MOVE TOKEN(4) TO RAW-VALUE
            PERFORM 7950-ENCLOSE-IN-QUOTES
-           STRING 
+           STRING
                MOVE-VERB             DELIMITED BY SIZE
                QUOTED-VALUE          DELIMITED BY SPACE
                TO-KEYWORD            DELIMITED BY SIZE
@@ -2206,7 +2207,7 @@
            END-STRING
            SET STATEMENT-IX UP BY 1
 
-           STRING 
+           STRING
                PERFORM-VERB          DELIMITED BY SIZE
                ' UT-ASSERT-EQUAL'    DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
@@ -2216,8 +2217,8 @@
            .
 
        4350-GENERATE-PIC-X-COMPARE.
-           MOVE SPACES TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)       
-           STRING 
+           MOVE SPACES TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
+           STRING
                MOVE-VERB            DELIMITED BY SIZE
                TOKEN(2)             DELIMITED BY SPACE
                TO-KEYWORD           DELIMITED BY SIZE
@@ -2226,14 +2227,14 @@
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
            SET STATEMENT-IX UP BY 1
-           STRING 
+           STRING
                MOVE-VERB             DELIMITED BY SIZE
                TOKEN(4)              DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
            SET STATEMENT-IX UP BY 1
-           STRING 
+           STRING
                STATEMENT-SPACER      DELIMITED BY SIZE
                TO-KEYWORD            DELIMITED BY SIZE
                'UT-EXPECTED'         DELIMITED BY SIZE
@@ -2241,7 +2242,7 @@
                          (STATEMENT-OFFSET:STATEMENT-LENGTH)
            END-STRING
            SET STATEMENT-IX UP BY 1
-           STRING 
+           STRING
                SET-VERB              DELIMITED BY SIZE
                ' UT-COMPARE-DEFAULT' DELIMITED BY SIZE
                TO-KEYWORD            DELIMITED BY SIZE
@@ -2254,7 +2255,7 @@
            MOVE 'PERFORM UT-ASSERT-EQUAL'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
-           .       
+           .
 
        4360-GENERATE-SET-REVERSE.
            IF REVERSE-COMPARE
@@ -2263,13 +2264,13 @@
            ELSE
                MOVE SET-NORMAL-TRUE-STMT
                     TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-IF   
-           SET STATEMENT-IX UP BY 1          
-           .    
+           END-IF
+           SET STATEMENT-IX UP BY 1
+           .
 
        4400-KEYWORD-TESTCASE.
       *****************************************************************
-      * TESTCASE keyword was found. 
+      * TESTCASE keyword was found.
       *
       * Convert
       *
@@ -2286,7 +2287,7 @@
            SET STATEMENT-IX TO 1
 
            IF GENERATE-PERFORM-AFTER
-               MOVE 'PERFORM UT-AFTER' TO        
+               MOVE 'PERFORM UT-AFTER' TO
                    GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                        (STATEMENT-OFFSET:STATEMENT-LENGTH)
                SET STATEMENT-IX UP BY 1
@@ -2294,7 +2295,7 @@
                SET GENERATE-PERFORM-AFTER TO TRUE
            END-IF
 
-           STRING 
+           STRING
                MOVE-VERB           DELIMITED BY SIZE
                TOKEN(2)            DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
@@ -2305,9 +2306,9 @@
            MOVE '    TO UT-TEST-CASE-NAME' TO
                GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
-           SET STATEMENT-IX UP BY 1        
+           SET STATEMENT-IX UP BY 1
 
-           MOVE 'PERFORM UT-BEFORE' TO        
+           MOVE 'PERFORM UT-BEFORE' TO
                GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
 
@@ -2317,7 +2318,7 @@
 
        4500-KEYWORD-TESTSUITE.
       *****************************************************************
-      * TESTSUITE keyword was found. 
+      * TESTSUITE keyword was found.
       *
       * Convert
       *
@@ -2337,19 +2338,19 @@
            MOVE 'DISPLAY "TEST SUITE:"' TO GENERATED-SOURCE-STATEMENT(2)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
            MOVE 'DISPLAY' TO GENERATED-SOURCE-STATEMENT(3)
-                   (STATEMENT-OFFSET:STATEMENT-LENGTH) 
-           MOVE TOKEN(2) TO GENERATED-SOURCE-STATEMENT(4)                  
-                   (STATEMENT-OFFSET:STATEMENT-LENGTH) 
+                   (STATEMENT-OFFSET:STATEMENT-LENGTH)
+           MOVE TOKEN(2) TO GENERATED-SOURCE-STATEMENT(4)
+                   (STATEMENT-OFFSET:STATEMENT-LENGTH)
            MOVE 'DISPLAY SPACE' TO GENERATED-SOURCE-STATEMENT(5)
                    (STATEMENT-OFFSET:STATEMENT-LENGTH)
            PERFORM 9440-WRITE-GENERATED-STMTS
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
+           SET SUPPRESS-COPY-SOURCE TO TRUE
            .
 
        4600-KEYWORD-BEFORE.
       *****************************************************************
-      * BEFORE-EACH keyword was found. 
-      * 
+      * BEFORE-EACH keyword was found.
+      *
       *     BEFORE-EACH [description]
       *         [COBOL statement]
       *         [COBOL statement]
@@ -2360,7 +2361,7 @@
       *****************************************************************
            INITIALIZE KEYWORD-MATCHED-INDICATOR
            PERFORM VARYING BEFORE-EACH-IX FROM 1 BY 1
-                   UNTIL TEST-CASES-END-OF-FILE 
+                   UNTIL TEST-CASES-END-OF-FILE
                       OR KEYWORD-MATCHED
                       OR BEFORE-EACH-IX IS GREATER THAN 50
                PERFORM 9350-READ-TEST-CASES
@@ -2378,15 +2379,15 @@
                ELSE
                    MOVE TEST-CASE-LINE TO BEFORE-EACH-STATEMENT
                                           (BEFORE-EACH-IX)
-               END-IF                           
+               END-IF
            END-PERFORM
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
+           SET SUPPRESS-COPY-SOURCE TO TRUE
            .
 
        4700-KEYWORD-AFTER.
       *****************************************************************
-      * AFTER-EACH keyword was found. 
-      * 
+      * AFTER-EACH keyword was found.
+      *
       *     AFTER-EACH [description]
       *         [COBOL statement]
       *         [COBOL statement]
@@ -2397,7 +2398,7 @@
       *****************************************************************
            INITIALIZE KEYWORD-MATCHED-INDICATOR
            PERFORM VARYING AFTER-EACH-IX FROM 1 BY 1
-                  UNTIL TEST-CASES-END-OF-FILE 
+                  UNTIL TEST-CASES-END-OF-FILE
                   OR KEYWORD-MATCHED
                   OR AFTER-EACH-IX IS GREATER THAN 50
                PERFORM 9350-READ-TEST-CASES
@@ -2415,9 +2416,9 @@
                ELSE
                    MOVE TEST-CASE-LINE TO AFTER-EACH-STATEMENT
                                           (AFTER-EACH-IX)
-               END-IF                     
+               END-IF
            END-PERFORM
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
+           SET SUPPRESS-COPY-SOURCE TO TRUE
            .
 
        4800-KEYWORD-MOCK.
@@ -2430,23 +2431,23 @@
            PERFORM VARYING TEMP-SUB FROM 1 BY 1
                    UNTIL TEMP-SUB IS GREATER THAN KEYWORD-END
                IF TEST-CASE-LINE(TEMP-SUB:1) IS NOT EQUAL TO SPACE
-                   IF TEST-CASE-LINE(TEMP-SUB:4) 
+                   IF TEST-CASE-LINE(TEMP-SUB:4)
                           IS EQUAL TO MOCK-KEYWORD
-                      SET IS-FIRST-TOKEN TO TRUE    
+                      SET IS-FIRST-TOKEN TO TRUE
                    END-IF
                    MOVE KEYWORD-END TO TEMP-SUB
-               END-IF                       
+               END-IF
            END-PERFORM
-           IF IS-FIRST-TOKEN   
+           IF IS-FIRST-TOKEN
                PERFORM 4810-PROCESS-MOCK-SPEC
-           END-IF    
+           END-IF
            .
 
        4810-PROCESS-MOCK-SPEC.
       *****************************************************************
-      * MOCK keyword was found. 
+      * MOCK keyword was found.
       *
-      * Save information about the MOCK so that code can be  
+      * Save information about the MOCK so that code can be
       * substituted to simulate interaction with the mocked item
       * when references are encountered in ORIGINAL-SOURCE.
       *****************************************************************
@@ -2467,14 +2468,14 @@
                     PERFORM 5085-PROCESS-MOCK-CICS-SPEC
                WHEN TOKEN(TOKEN-IX) IS EQUAL TO PARA-KEYWORD
                                              OR PARAGRAPH-KEYWORD
-                    PERFORM 5095-PROCESS-MOCK-PARA-SPEC                              
+                    PERFORM 5095-PROCESS-MOCK-PARA-SPEC
                WHEN OTHER
-                    SET MOCK-SYNTAX-ERROR TO TRUE     
+                    SET MOCK-SYNTAX-ERROR TO TRUE
            END-EVALUATE
            SET SUPPRESS-COPY-SOURCE TO TRUE
            IF MOCK-SYNTAX-ERROR
-               DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-1    
-               DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-2   
+               DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-1
+               DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-2
                DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-3
                DISPLAY THIS-PROGRAM MSG-MOCK-SYNTAX-4
            END-IF
@@ -2482,12 +2483,12 @@
 
        4900-PROCESS-MOCK-FILE-SPEC.
       *****************************************************************
-      * Process a specification to mock access to a file. 
-      * 
+      * Process a specification to mock access to a file.
+      *
       *     MOCK FILE [internal-name]
       *         ON [io-operation] RETURN [record-value]
       *     END-MOCK
-      * 
+      *
       *     MOCK FILE [internal-name]
       *         ON [io-operation] STATUS [IS] [file status]
       *     END-MOCK
@@ -2508,15 +2509,15 @@
 
            MOVE TOKEN(TOKEN-IX) TO RAW-VALUE
            PERFORM 7950-ENCLOSE-IN-QUOTES
-           SET STATEMENT-IX UP BY 1    
-           STRING 
+           SET STATEMENT-IX UP BY 1
+           STRING
                STATEMENT-SPACER        DELIMITED BY SIZE
                MOVE-VERB               DELIMITED BY SIZE
                QUOTED-VALUE            DELIMITED BY SPACE
                TO-KEYWORD              DELIMITED BY SIZE
                'UT-MOCK-FIND-FILENAME' DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
 
       * Next token must be 'ON', as in 'ON REWRITE do such-and-such'
 
@@ -2526,7 +2527,7 @@
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
            IF TOKEN(TOKEN-IX) IS NOT EQUAL TO 'ON'
                SET MOCK-SYNTAX-ERROR TO TRUE
-           END-IF    
+           END-IF
 
       * Next token must be an I/O operation such as READ or WRITE.
 
@@ -2544,19 +2545,19 @@
 
                    MOVE TOKEN(TOKEN-IX) TO RAW-VALUE
                    PERFORM 7950-ENCLOSE-IN-QUOTES
-                   SET STATEMENT-IX UP BY 1    
+                   SET STATEMENT-IX UP BY 1
                    MOVE SPACES TO GENERATED-SOURCE-STATEMENT
                                              (STATEMENT-IX)
-                   STRING 
+                   STRING
                        STATEMENT-SPACER         DELIMITED BY SIZE
                        MOVE-VERB                DELIMITED BY SIZE
                        QUOTED-VALUE             DELIMITED BY SPACE
                        TO-KEYWORD               DELIMITED BY SIZE
                        'UT-MOCK-FIND-OPERATION' DELIMITED BY SIZE
                        INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-                   END-STRING    
-               END-IF            
-           END-PERFORM       
+                   END-STRING
+               END-IF
+           END-PERFORM
 
       * Keyword 'STATUS' is next.
 
@@ -2565,11 +2566,11 @@
 
       * Optional syntactic sugar 'IS' may or may not be next.
 
-           SET TOKEN-IX UP BY 1           
+           SET TOKEN-IX UP BY 1
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
            IF TOKEN(TOKEN-IX) IS EQUAL TO 'IS'
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
-           END-IF    
+           END-IF
 
            SET STATEMENT-IX UP BY 1
            PERFORM 6010-GEN-INIT-ACCESS-COUNT
@@ -2579,7 +2580,7 @@
       * record value.
 
                WHEN TOKEN(TOKEN-IX - 1) IS EQUAL TO 'RETURN'
-                    MOVE TOKEN(TOKEN-IX) 
+                    MOVE TOKEN(TOKEN-IX)
                       TO MOCK-RECORD(MOCK-IX)
 
                     SET STATEMENT-IX UP BY 1
@@ -2590,20 +2591,20 @@
                         TO-KEYWORD           DELIMITED BY SIZE
                         'UT-MOCK-SET-RECORD' DELIMITED BY SIZE
                         INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-                    END-STRING    
+                    END-STRING
 
       * If the last token was STATUS, then the current token is a
-      * FILE STATUS value. 
+      * FILE STATUS value.
 
                WHEN TOKEN(TOKEN-IX - 1) IS EQUAL TO 'STATUS'
                     PERFORM VARYING MOCK-STATUS-IX FROM 1 BY 1
                             UNTIL MOCK-STATUS-IX IS GREATER THAN
-                                  MAX-STATUS-MNEMONICS 
+                                  MAX-STATUS-MNEMONICS
                                OR TOKEN(TOKEN-IX) IS EQUAL TO
                                   MOCK-FILE-STATUS-MNEMONIC
                                       (MOCK-STATUS-IX)
                     END-PERFORM
-                    IF MOCK-STATUS-IX IS GREATER THAN 
+                    IF MOCK-STATUS-IX IS GREATER THAN
                             MAX-STATUS-MNEMONICS
                         PERFORM 7900-STRIP-QUOTES
                         MOVE TOKEN(TOKEN-IX)(1:2) TO
@@ -2611,7 +2612,7 @@
                     ELSE
                         MOVE MOCK-FILE-STATUS-VALUE(MOCK-STATUS-IX)
                             TO MOCK-FILE-STATUS(MOCK-IX)
-                    END-IF        
+                    END-IF
 
                     SET STATEMENT-IX UP BY 1
                     STRING
@@ -2621,19 +2622,19 @@
                         TO-KEYWORD                DELIMITED BY SIZE
                         'UT-MOCK-SET-FILE-STATUS' DELIMITED BY SIZE
                         INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-                    END-STRING    
+                    END-STRING
 
-               WHEN OTHER              
+               WHEN OTHER
                     SET MOCK-SYNTAX-ERROR TO TRUE
-           END-EVALUATE      
+           END-EVALUATE
 
       * MOCK specifications must end with END-MOCK
-                        
+
            SET TOKEN-IX UP BY 1
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
            IF TOKEN(TOKEN-IX) IS NOT EQUAL TO 'END-MOCK'
                SET MOCK-SYNTAX-ERROR TO TRUE
-           END-IF    
+           END-IF
 
            SET STATEMENT-IX UP BY 1
            MOVE SET-FIND-FILE-MOCK-STMT
@@ -2644,11 +2645,11 @@
                 TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
 
            PERFORM 9440-WRITE-GENERATED-STMTS
-           .    
+           .
 
        5000-KEYWORD-VERIFY.
       *****************************************************************
-      * VERIFY keyword was found. 
+      * VERIFY keyword was found.
       *
       * Generate assertion code in TEST-SOURCE.
       *
@@ -2661,10 +2662,10 @@
            PERFORM 7980-CHECK-FOR-IGNORE
            IF STRING-NOT-FOUND
                PERFORM 5001-IDENT-MOCK-TO-VERIFY
-           END-IF    
+           END-IF
            .
 
-       5001-IDENT-MOCK-TO-VERIFY.           
+       5001-IDENT-MOCK-TO-VERIFY.
       *****************************************************************
       * Identify the type of mock for the VERIFY.
       *****************************************************************
@@ -2682,7 +2683,7 @@
                PERFORM 5003-CHECK-VERIFY-CALL
                IF KEYWORD-MATCHED
                    PERFORM 5020-VERIFY-CALL-MOCK
-               ELSE    
+               ELSE
 
                    MOVE TEMP-SUB TO KEYWORD-OFFSET
                    SUBTRACT 5 FROM KEYWORD-OFFSET
@@ -2695,12 +2696,12 @@
                        PERFORM 5005-CHECK-VERIFY-PARA
                        IF KEYWORD-MATCHED
                            PERFORM 5040-VERIFY-PARA-MOCK
-                       ELSE    
+                       ELSE
                            PERFORM 5070-DISPLAY-VERIFY-ERROR
                        END-IF
-                   END-IF        
+                   END-IF
                END-IF
-           END-IF                
+           END-IF
            .
 
        5002-CHECK-VERIFY-FILE.
@@ -2744,7 +2745,7 @@
                MOVE 10 TO KEYWORD-MATCH-LENGTH
                PERFORM 7400-MATCH-KEYWORD
            END-IF
-           .    
+           .
 
        5010-VERIFY-FILE-MOCK.
       *****************************************************************
@@ -2800,23 +2801,23 @@
            SET STATEMENT-IX UP BY 1
 
            PERFORM 6100-GEN-LOOKUP-MOCK
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
-           MOVE '           IF UT-MOCK-FOUND' 
+           MOVE '           IF UT-MOCK-FOUND'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
-           PERFORM 6200-GEN-LOOKUP-FILE    
-           MOVE TEMP-STATEMENT 
-               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)       
+           PERFORM 6200-GEN-LOOKUP-FILE
+           MOVE TEMP-STATEMENT
+               TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
            PERFORM 5065-GEN-VERIFY-CODE
 
            PERFORM 9440-WRITE-GENERATED-STMTS
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
+           SET SUPPRESS-COPY-SOURCE TO TRUE
            .
 
        5020-VERIFY-CALL-MOCK.
@@ -2837,7 +2838,7 @@
            SET MORE-TOKENS TO TRUE
            PERFORM UNTIL NO-MORE-TOKENS
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
-               IF TOKEN(TOKEN-IX) IS EQUAL TO 
+               IF TOKEN(TOKEN-IX) IS EQUAL TO
                   HAPPENED-KEYWORD OR NEVER-KEYWORD
                   SET NO-MORE-TOKENS TO TRUE
                ELSE
@@ -2853,17 +2854,17 @@
 
            PERFORM 5090-STRINGIFY-KEYWORDS
 
-      * Look up the mock     
+      * Look up the mock
 
            SET MOCK-NOT-MATCHED TO TRUE
-           PERFORM VARYING MOCK-IX FROM 1 BY 1 
+           PERFORM VARYING MOCK-IX FROM 1 BY 1
                    UNTIL MOCK-IX IS GREATER THAN MAX-MOCKS
                       OR MOCK-MATCHED
-               IF MOCK-CICS(MOCK-IX) 
+               IF MOCK-CICS(MOCK-IX)
                AND MOCK-LOOKUP-KEY IS EQUAL TO
                        MOCK-CICS-KEYWORDS-KEY(MOCK-IX)
                    SET MOCK-MATCHED TO TRUE
-               END-IF    
+               END-IF
            END-PERFORM
 
            PERFORM 5060-PARSE-HAPPENED-SPEC
@@ -2900,22 +2901,22 @@
            SET STATEMENT-IX UP BY 1
 
            PERFORM 6100-GEN-LOOKUP-MOCK
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
-           MOVE '           IF UT-MOCK-FOUND' 
+           MOVE '           IF UT-MOCK-FOUND'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
            MOVE INCR-MOCK-ACCESS-COUNT-STMT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           SET STATEMENT-IX UP BY 1               
+           SET STATEMENT-IX UP BY 1
 
            PERFORM 5065-GEN-VERIFY-CODE
 
            PERFORM 9440-WRITE-GENERATED-STMTS
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
+           SET SUPPRESS-COPY-SOURCE TO TRUE
            .
 
        5030-VERIFY-CICS-MOCK.
@@ -2936,7 +2937,7 @@
            SET MORE-TOKENS TO TRUE
            PERFORM UNTIL NO-MORE-TOKENS
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
-               IF TOKEN(TOKEN-IX) IS EQUAL TO 
+               IF TOKEN(TOKEN-IX) IS EQUAL TO
                   HAPPENED-KEYWORD OR NEVER-KEYWORD
                   SET NO-MORE-TOKENS TO TRUE
                ELSE
@@ -2953,14 +2954,14 @@
            PERFORM 5090-STRINGIFY-KEYWORDS
 
            SET MOCK-NOT-MATCHED TO TRUE
-           PERFORM VARYING MOCK-IX FROM 1 BY 1 
+           PERFORM VARYING MOCK-IX FROM 1 BY 1
                    UNTIL MOCK-IX IS GREATER THAN MAX-MOCKS
                       OR MOCK-MATCHED
-               IF MOCK-CICS(MOCK-IX) 
+               IF MOCK-CICS(MOCK-IX)
                AND MOCK-LOOKUP-KEY IS EQUAL TO
                        MOCK-CICS-KEYWORDS-KEY(MOCK-IX)
                    SET MOCK-MATCHED TO TRUE
-               END-IF    
+               END-IF
            END-PERFORM
 
            PERFORM 5060-PARSE-HAPPENED-SPEC
@@ -2997,19 +2998,19 @@
            SET STATEMENT-IX UP BY 1
 
            PERFORM 6100-GEN-LOOKUP-MOCK
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
-           MOVE '           IF UT-MOCK-FOUND' 
+           MOVE '           IF UT-MOCK-FOUND'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
            PERFORM 5065-GEN-VERIFY-CODE
 
            PERFORM 9440-WRITE-GENERATED-STMTS
-           SET SUPPRESS-COPY-SOURCE TO TRUE        
-           .  
+           SET SUPPRESS-COPY-SOURCE TO TRUE
+           .
 
        5040-VERIFY-PARA-MOCK.
       *****************************************************************
@@ -3033,10 +3034,10 @@
                IF MOCK-PARAGRAPH(MOCK-IX)
                AND MOCK-LOOKUP-PARA-NAME IS EQUAL TO
                        MOCK-PARA-NAME(MOCK-IX)
-                   SET MOCK-MATCHED TO TRUE    
+                   SET MOCK-MATCHED TO TRUE
                END-IF
            END-PERFORM
-           
+
       * Expect next token to be WAS, PERFORMED, HAPPENED, or NEVER
       * Need to skip past variable-length paragraph name
 
@@ -3045,10 +3046,10 @@
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
 
       * If token is syntactic sugar 'WAS', skip to the next token.
-      
+
            IF TOKEN(TOKEN-IX) IS EQUAL TO WAS-KEYWORD
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
-           END-IF         
+           END-IF
 
            PERFORM 5060-PARSE-HAPPENED-SPEC
 
@@ -3085,11 +3086,11 @@
            SET STATEMENT-IX UP BY 1
 
            PERFORM 6100-GEN-LOOKUP-MOCK
-           MOVE TEMP-STATEMENT 
+           MOVE TEMP-STATEMENT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
-           MOVE '           IF UT-MOCK-FOUND' 
+           MOVE '           IF UT-MOCK-FOUND'
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            SET STATEMENT-IX UP BY 1
 
@@ -3113,13 +3114,13 @@
       *      AT LEAST ONCE
       *      AT LEAST n TIME[S]
       *      NO MORE THAN ONCE
-      *      NO MORE THAN n TIME[S]   
+      *      NO MORE THAN n TIME[S]
       *****************************************************************
            IF TOKEN(TOKEN-IX) IS EQUAL TO NEVER-KEYWORD
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
                MOVE ZERO TO MOCK-TEST-COUNT
-           ELSE                   
-               IF TOKEN(TOKEN-IX) 
+           ELSE
+               IF TOKEN(TOKEN-IX)
                    IS EQUAL TO HAPPENED-KEYWORD OR PERFORMED-KEYWORD
                    SET KEYWORD-NOT-MATCHED TO TRUE
                    MOVE KEYWORD-OFFSET TO SAVE-OFFSET
@@ -3140,14 +3141,14 @@
                        ELSE
                            MOVE SAVE-OFFSET TO KEYWORD-OFFSET
                            SET VERIFY-EXACT TO TRUE
-                       END-IF    
+                       END-IF
                    END-IF
                    PERFORM 7100-NEXT-TOKEN-TEST-CASES
                END-IF
                IF TOKEN(TOKEN-IX) IS EQUAL TO ONCE-KEYWORD
                    MOVE 1 TO MOCK-TEST-COUNT
-               ELSE     
-                   MOVE TOKEN(TOKEN-IX) TO MOCK-TEST-COUNT    
+               ELSE
+                   MOVE TOKEN(TOKEN-IX) TO MOCK-TEST-COUNT
                    PERFORM 7100-NEXT-TOKEN-TEST-CASES
                    IF TOKEN(TOKEN-IX) IS EQUAL TO 'TIME' OR 'TIMES'
                        CONTINUE
@@ -3155,10 +3156,10 @@
                        PERFORM 5070-DISPLAY-VERIFY-ERROR
                    END-IF
                END-IF
-           END-IF        
+           END-IF
            .
 
-       5065-GEN-VERIFY-CODE.    
+       5065-GEN-VERIFY-CODE.
       *****************************************************************
       * Generate VERIFY code common to all types of mocks.
       *****************************************************************
@@ -3167,7 +3168,7 @@
                MOVE-VERB                             DELIMITED BY SIZE
                MOCK-TEST-COUNT                       DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
            SET STATEMENT-IX UP BY 1
 
            STRING
@@ -3175,7 +3176,7 @@
                TO-KEYWORD                            DELIMITED BY SIZE
                'UT-EXPECTED-ACCESSES'                DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
            SET STATEMENT-IX UP BY 1
 
            STRING
@@ -3183,7 +3184,7 @@
                MOVE-VERB                             DELIMITED BY SIZE
                'UT-MOCK-ACCESS-COUNT(UT-MOCK-IX)'    DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
            SET STATEMENT-IX UP BY 1
 
            STRING
@@ -3191,8 +3192,8 @@
                TO-KEYWORD                            DELIMITED BY SIZE
                'UT-ACTUAL-ACCESSES'                  DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
-           SET STATEMENT-IX UP BY 1    
+           END-STRING
+           SET STATEMENT-IX UP BY 1
 
            MOVE INCR-TESTCASE-COUNT-STMT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
@@ -3200,15 +3201,15 @@
 
            EVALUATE TRUE
                WHEN VERIFY-AT-LEAST
-                    MOVE SET-VERIFY-AT-LEAST-STMT 
+                    MOVE SET-VERIFY-AT-LEAST-STMT
                          TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                WHEN VERIFY-NO-MORE-THAN
-                    MOVE SET-VERIFY-NO-MORE-THAN-STMT 
+                    MOVE SET-VERIFY-NO-MORE-THAN-STMT
                          TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                WHEN OTHER
                     MOVE SET-VERIFY-EXACT-STMT
                          TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-EVALUATE    
+           END-EVALUATE
            SET STATEMENT-IX UP BY 1
 
            STRING
@@ -3216,25 +3217,25 @@
                PERFORM-VERB                          DELIMITED BY SIZE
                'UT-ASSERT-ACCESSES'                  DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
            .
 
-       5070-DISPLAY-VERIFY-ERROR.    
+       5070-DISPLAY-VERIFY-ERROR.
       *****************************************************************
       * Display an informative error message when the program cannot
       * understand a VERIFY specification.
       *****************************************************************
            PERFORM VARYING MSG-VERIFY-IX FROM 1 BY 1
                    UNTIL MSG-VERIFY-IX IS GREATER THAN MSG-VERIFY-COUNT
-               DISPLAY THIS-PROGRAM MSG-VERIFY-SYNTAX(MSG-VERIFY-IX)    
+               DISPLAY THIS-PROGRAM MSG-VERIFY-SYNTAX(MSG-VERIFY-IX)
            END-PERFORM
            .
-       
+
        5075-PROCESS-MOCK-CALL-SPEC.
       *****************************************************************
       * Process a specification to mock a CALL statement.
       *
-      *     MOCK CALL 
+      *     MOCK CALL
       *             [tokens]
       *             END-CALL
       *         [any Cobol statements]
@@ -3254,7 +3255,7 @@
       * in the program under test.
 
            SET MORE-TOKENS TO TRUE
-           PERFORM VARYING KEYWORD-OFFSET 
+           PERFORM VARYING KEYWORD-OFFSET
                    FROM KEYWORD-OFFSET BY 1
                    UNTIL NO-MORE-TOKENS
 
@@ -3265,22 +3266,22 @@
                    PERFORM 7900-STRIP-QUOTES
                    MOVE TOKEN(TOKEN-IX) TO MOCK-LOOKUP-KEYWORD
                                            (MOCK-LOOKUP-IX)
-                   SET MOCK-LOOKUP-IX UP BY 1                        
-               END-IF    
+                   SET MOCK-LOOKUP-IX UP BY 1
+               END-IF
 
            END-PERFORM
 
            PERFORM 5090-STRINGIFY-KEYWORDS
-           MOVE MOCK-LOOKUP-KEY TO MOCK-CALL-TOKENS-KEY(MOCK-IX)         
+           MOVE MOCK-LOOKUP-KEY TO MOCK-CALL-TOKENS-KEY(MOCK-IX)
 
            MOVE MOCK-LOOKUP-KEY TO RAW-VALUE
            PERFORM 7950-ENCLOSE-IN-QUOTES
            MOVE SPACES TO GENERATED-SOURCE-STATEMENTS
            SET STATEMENT-IX TO 1
 
-           STRING 
+           STRING
                STATEMENT-SPACER             DELIMITED BY SIZE
-               MOVE-VERB                    DELIMITED BY SIZE               
+               MOVE-VERB                    DELIMITED BY SIZE
                QUOTED-VALUE                 DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            END-STRING
@@ -3292,7 +3293,7 @@
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            END-STRING
 
-      * Save the Cobol statements that provide the behavior for this 
+      * Save the Cobol statements that provide the behavior for this
       * mock (if any). We assume all statements between END-CALL and
       * END-MOCK are to be substituted in the program under test for
       * the original CALL statement.
@@ -3313,30 +3314,30 @@
 
            PERFORM 9440-WRITE-GENERATED-STMTS
            .
-       
+
        5085-PROCESS-MOCK-CICS-SPEC.
       *****************************************************************
-      * Process a specification to mock an EXEC CICS command. 
-      * 
+      * Process a specification to mock an EXEC CICS command.
+      *
       *     MOCK CICS [keywords]
       *         [any Cobol statements]
       *     END-MOCK
       *
       * By the time this routine is performed, the keywords MOCK and
-      * CICS have already been processed. 
+      * CICS have already been processed.
       *****************************************************************
-           SET MOCK-CICS(MOCK-IX) TO TRUE     
+           SET MOCK-CICS(MOCK-IX) TO TRUE
            SET MOCK-LOOKUP-IX TO 1
            MOVE SPACES TO MOCK-LOOKUP-KEY
            MOVE SPACES TO MOCK-LOOKUP-KEYWORDS
 
-      * Collect the tokens that are part of the EXEC CICS mock spec. 
+      * Collect the tokens that are part of the EXEC CICS mock spec.
       * When we hit something that is not a CICS reserved word, we have
       * reached the first Cobol statement to be executed to mock the
       * command's behavior at run time.
 
            SET MORE-RESERVED-WORDS TO TRUE
-           PERFORM VARYING KEYWORD-OFFSET 
+           PERFORM VARYING KEYWORD-OFFSET
                    FROM KEYWORD-OFFSET BY 1
                    UNTIL TOKEN(TOKEN-IX) IS EQUAL TO END-MOCK-KEYWORD
                       OR NO-MORE-RESERVED-WORDS
@@ -3346,7 +3347,7 @@
                MOVE TOKEN(TOKEN-IX) TO CANDIDATE-TOKEN
                INSPECT CANDIDATE-TOKEN REPLACING ALL '(' BY SPACE
                MOVE SPACES TO CANDIDATE-CICS-RESERVED-WORD
-               STRING CANDIDATE-TOKEN 
+               STRING CANDIDATE-TOKEN
                    DELIMITED BY SPACE
                    INTO CANDIDATE-CICS-RESERVED-WORD
                END-STRING
@@ -3358,7 +3359,7 @@
                    SET MOCK-LOOKUP-IX UP BY 1
                ELSE
                    SET NO-MORE-RESERVED-WORDS TO TRUE
-               END-IF            
+               END-IF
 
            END-PERFORM
 
@@ -3367,16 +3368,16 @@
       * Save the list of CICS keywords for this mock in this program
       * and generate code to save them in the test program.
 
-           MOVE MOCK-LOOKUP-KEY TO MOCK-CICS-KEYWORDS-KEY(MOCK-IX)         
+           MOVE MOCK-LOOKUP-KEY TO MOCK-CICS-KEYWORDS-KEY(MOCK-IX)
 
            MOVE TEMP-VALUE TO RAW-VALUE
            PERFORM 7950-ENCLOSE-IN-QUOTES
            MOVE SPACES TO GENERATED-SOURCE-STATEMENTS
            SET STATEMENT-IX TO 1
 
-           STRING 
+           STRING
                STATEMENT-SPACER             DELIMITED BY SIZE
-               MOVE-VERB                    DELIMITED BY SIZE               
+               MOVE-VERB                    DELIMITED BY SIZE
                QUOTED-VALUE                 DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            END-STRING
@@ -3388,7 +3389,7 @@
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
            END-STRING
 
-      * Save the Cobol statements that provide the behavior for this 
+      * Save the Cobol statements that provide the behavior for this
       * mock (if any). We assume all statements following the last
       * CICS keyword and before the END-MOCK statement are Cobol
       * statements that are to be executed when the mocked CICS
@@ -3400,12 +3401,12 @@
            PERFORM VARYING DEFAULT-CICS-STATEMENT-IX FROM 1 BY 1
                    UNTIL DEFAULT-CICS-STATEMENT-IX
                          IS GREATER THAN DEFAULT-CICS-STATEMENT-COUNT
-          
+
                MOVE DEFAULT-CICS-STATEMENT
                        (DEFAULT-CICS-STATEMENT-IX)
                    TO MOCK-REPLACEMENT-STMT
-                       (MOCK-IX, DEFAULT-CICS-STATEMENT-IX) 
-           END-PERFORM              
+                       (MOCK-IX, DEFAULT-CICS-STATEMENT-IX)
+           END-PERFORM
 
            SET TOKEN-IX UP BY 1
            SET MOCK-REPLACEMENT-STMTS-IX TO DEFAULT-CICS-STATEMENT-IX
@@ -3424,27 +3425,27 @@
 
        5090-STRINGIFY-KEYWORDS.
       *****************************************************************
-      * Format the list of CICS keywords as a single string with the 
+      * Format the list of CICS keywords as a single string with the
       * keywords separated by spaces. This will be the key for looking
       * up the mock during test program execution.
       *****************************************************************
            MOVE SPACES TO TEMP-VALUE
            PERFORM VARYING MOCK-LOOKUP-IX FROM 1 BY 1
-                   UNTIL MOCK-LOOKUP-IX 
+                   UNTIL MOCK-LOOKUP-IX
                          IS GREATER THAN MAX-CICS-KEYWORDS
                       OR MOCK-LOOKUP-KEYWORD (MOCK-LOOKUP-IX)
                          IS EQUAL TO SPACES
-           
+
                INSPECT MOCK-LOOKUP-KEYWORD(MOCK-LOOKUP-IX)
                    REPLACING ALL SINGLE-QUOTE BY '"'
 
-      * The following provides the same functionality as these 
+      * The following provides the same functionality as these
       * statements, and works for older versions of Cobol installed
       * on some mainframe systems.
       *         INSPECT MOCK-LOOKUP-KEYWORD(MOCK-LOOKUP-IX)
       *             REPLACING ALL ' (' BY '('
 
-               MOVE MOCK-LOOKUP-KEYWORD(MOCK-LOOKUP-IX) 
+               MOVE MOCK-LOOKUP-KEYWORD(MOCK-LOOKUP-IX)
                    TO TARGET-STRING
                MOVE 80 TO TARGET-STRING-LENGTH
                MOVE ' (' TO SEARCH-STRING
@@ -3456,13 +3457,13 @@
                    TO RAW-VALUE
                PERFORM 7960-FIND-LENGTH-OF-RAW-VALUE
 
-               IF TEMP-VALUE IS EQUAL TO SPACES               
+               IF TEMP-VALUE IS EQUAL TO SPACES
                    STRING
                        TEMP-VALUE            DELIMITED BY SPACE
                        RAW-VALUE(1:TEMP-SUB) DELIMITED BY SIZE
                        INTO TEMP-VALUE
                    END-STRING
-               ELSE                      
+               ELSE
                    MOVE RAW-VALUE TO SAVE-VALUE
                    MOVE TEMP-SUB TO SAVE-SUB
                    MOVE TEMP-VALUE TO RAW-VALUE
@@ -3477,46 +3478,46 @@
                    MOVE RAW-VALUE TO TEMP-VALUE
                END-IF
 
-           END-PERFORM        
-           MOVE TEMP-VALUE TO MOCK-LOOKUP-KEY          
-           .           
+           END-PERFORM
+           MOVE TEMP-VALUE TO MOCK-LOOKUP-KEY
+           .
 
        5095-PROCESS-MOCK-PARA-SPEC.
       *****************************************************************
-      * Process a specification to mock a paragraph. 
-      * 
+      * Process a specification to mock a paragraph.
+      *
       *     MOCK PARA[GRAPH]
       *         [any Cobol statements]
       *     END-MOCK
       *
       * By the time this routine is performed, the keywords MOCK and
-      * PARA or PARAGRAPH have already been processed. 
+      * PARA or PARAGRAPH have already been processed.
       *****************************************************************
            SET MOCK-PARAGRAPH(MOCK-IX) TO TRUE
            MOVE SPACES TO GENERATED-SOURCE-STATEMENTS
            SET STATEMENT-IX TO 1
 
-      * Next token is the paragraph name     
+      * Next token is the paragraph name
 
            ADD 1 TO KEYWORD-OFFSET
            PERFORM 7100-NEXT-TOKEN-TEST-CASES
-           STRING 
+           STRING
                TOKEN(TOKEN-IX)          DELIMITED BY SPACE
                PERIOD                   DELIMITED BY SIZE
                INTO MOCK-PARA-NAME(MOCK-IX)
-           END-STRING    
+           END-STRING
 
            MOVE TOKEN(TOKEN-IX) TO RAW-VALUE
            PERFORM 7950-ENCLOSE-IN-QUOTES
-           STRING 
+           STRING
                STATEMENT-SPACER         DELIMITED BY SIZE
                MOVE-VERB                DELIMITED BY SIZE
                QUOTED-VALUE             DELIMITED BY SPACE
                TO-KEYWORD               DELIMITED BY SIZE
                'UT-MOCK-FIND-PARA-NAME' DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
-           SET STATEMENT-IX UP BY 1    
+           END-STRING
+           SET STATEMENT-IX UP BY 1
 
            MOVE SET-FIND-PARA-MOCK-STMT
                TO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
@@ -3534,7 +3535,7 @@
            PERFORM 6020-SAVE-REPL-STMTS-FOR-MOCK
 
            PERFORM 9440-WRITE-GENERATED-STMTS
-           . 
+           .
 
        6010-GEN-INIT-ACCESS-COUNT.
       *****************************************************************
@@ -3548,7 +3549,7 @@
                TO-KEYWORD                     DELIMITED BY SIZE
                'UT-MOCK-ACCESS-COUNT(UT-MOCK-IX)' DELIMITED BY SIZE
                INTO GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
-           END-STRING    
+           END-STRING
            .
 
        6020-SAVE-REPL-STMTS-FOR-MOCK.
@@ -3573,15 +3574,15 @@
 
            IF TOKEN(TOKEN-IX - 1) IS EQUAL TO END-MOCK-KEYWORD
                CONTINUE
-           ELSE    
+           ELSE
                PERFORM 6021-EXTRACT-REPL-STMTS
            END-IF
            .
 
-       6021-EXTRACT-REPL-STMTS.           
-           PERFORM VARYING MOCK-REPLACEMENT-STMTS-IX 
+       6021-EXTRACT-REPL-STMTS.
+           PERFORM VARYING MOCK-REPLACEMENT-STMTS-IX
                    FROM MOCK-REPLACEMENT-STMTS-IX BY 1
-                   UNTIL MOCK-REPLACEMENT-STMTS-IX IS GREATER THAN 
+                   UNTIL MOCK-REPLACEMENT-STMTS-IX IS GREATER THAN
                          MAX-MOCK-REPLACEMENT-STMTS
                       OR TOKEN(TOKEN-IX) IS EQUAL TO END-MOCK-KEYWORD
                       OR END-OF-TEST-CASES
@@ -3590,45 +3591,45 @@
                PERFORM 7100-NEXT-TOKEN-TEST-CASES
                IF TOKEN(TOKEN-IX) IS EQUAL TO END-MOCK-KEYWORD
                    CONTINUE
-               ELSE     
+               ELSE
                    MOVE TOKEN(TOKEN-IX) TO CANDIDATE-TEST-KEYWORD
-                   IF IS-A-TEST-KEYWORD 
+                   IF IS-A-TEST-KEYWORD
                        SET SUPPRESS-TEST-CASE-READ TO TRUE
-                   ELSE    
+                   ELSE
                        INSPECT TEST-CASE-LINE
                            REPLACING ALL SINGLE-QUOTE BY '"'
                        MOVE TEST-CASE-LINE TO RAW-VALUE
                        PERFORM 7960-FIND-LENGTH-OF-RAW-VALUE
-                       MOVE RAW-VALUE(1:TEMP-SUB) 
+                       MOVE RAW-VALUE(1:TEMP-SUB)
                            TO MOCK-REPLACEMENT-STMT
-                           (MOCK-IX, MOCK-REPLACEMENT-STMTS-IX)    
-                       PERFORM 9350-READ-TEST-CASES  
+                           (MOCK-IX, MOCK-REPLACEMENT-STMTS-IX)
+                       PERFORM 9350-READ-TEST-CASES
                        MOVE KEYWORD-START TO KEYWORD-OFFSET
-                   END-IF    
-               END-IF    
+                   END-IF
+               END-IF
            END-PERFORM
            .
 
-       6030-WRITE-GENERATED-STMTS.    
+       6030-WRITE-GENERATED-STMTS.
       *****************************************************************
       * Write the source statements that express the defined behavior
-      * of a mock into TEST-SOURCE. 
+      * of a mock into TEST-SOURCE.
       *****************************************************************
            IF MOCK-MATCHED
                PERFORM VARYING MOCK-REPLACEMENT-STMTS-IX FROM 1 BY 1
                        UNTIL MOCK-REPLACEMENT-STMTS-IX IS GREATER THAN
                              MAX-MOCK-REPLACEMENT-STMTS
                           OR MOCK-REPLACEMENT-STMT
-                             (MOCK-IX, MOCK-REPLACEMENT-STMTS-IX) 
+                             (MOCK-IX, MOCK-REPLACEMENT-STMTS-IX)
                              IS EQUAL TO SPACES
                    MOVE MOCK-REPLACEMENT-STMT
                              (MOCK-IX, MOCK-REPLACEMENT-STMTS-IX)
                        TO GENERATED-SOURCE-STATEMENT
-                             (MOCK-REPLACEMENT-STMTS-IX)          
-               END-PERFORM                 
-               PERFORM 9440-WRITE-GENERATED-STMTS    
+                             (MOCK-REPLACEMENT-STMTS-IX)
+               END-PERFORM
+               PERFORM 9440-WRITE-GENERATED-STMTS
            END-IF
-           .     
+           .
 
        6100-GEN-LOOKUP-MOCK.
       *****************************************************************
@@ -3640,7 +3641,7 @@
                PERFORM-VERB            DELIMITED BY SIZE
                'UT-LOOKUP-MOCK'        DELIMITED BY SIZE
                 INTO TEMP-STATEMENT
-           END-STRING               
+           END-STRING
            .
 
        6200-GEN-LOOKUP-FILE.
@@ -3655,7 +3656,7 @@
                PERFORM-VERB            DELIMITED BY SIZE
                'UT-LOOKUP-FILE'        DELIMITED BY SIZE
                 INTO TEMP-STATEMENT
-           END-STRING               
+           END-STRING
            .
 
        6300-GEN-SET-FILENAME-TO-FIND.
@@ -3669,10 +3670,10 @@
                TO-KEYWORD              DELIMITED BY SIZE
                'UT-MOCK-FIND-FILENAME' DELIMITED BY SIZE
                 INTO TEMP-STATEMENT
-           END-STRING               
+           END-STRING
            .
 
-       6400-GET-FILE-INFO-FOR-MOCK.     
+       6400-GET-FILE-INFO-FOR-MOCK.
       *****************************************************************
       * MOCK-IX is pointing to a MOCK entry and we need to find the
       * corresponding file information.
@@ -3687,8 +3688,8 @@
                        MOCK-FILENAME(MOCK-IX)
                    SET FILENAME-MATCHED TO TRUE
                END-IF
-           END-PERFORM 
-           SET FILE-IX DOWN BY 1                      
+           END-PERFORM
+           SET FILE-IX DOWN BY 1
            .
 
        6500-LOOK-UP-FILE-MOCK.
@@ -3706,8 +3707,8 @@
                AND MOCK-LOOKUP-OPERATION EQUAL MOCK-OPERATION(MOCK-IX)
                    SET MOCK-MATCHED TO TRUE
                    SET MOCK-IX DOWN BY 1
-               END-IF    
-           END-PERFORM           
+               END-IF
+           END-PERFORM
            .
 
       *****************************************************************
@@ -3741,30 +3742,30 @@
       *****************************************************************
            PERFORM 7310-FIND-NEXT-NON-SPACE
            IF LINE-TO-PARSE(KEYWORD-OFFSET:1) IS EQUAL TO '''' OR '"'
-               MOVE LINE-TO-PARSE(KEYWORD-OFFSET:1) 
+               MOVE LINE-TO-PARSE(KEYWORD-OFFSET:1)
                     TO WS-STRING-DELIMITER
                COMPUTE WS-NEXT =
                    KEYWORD-OFFSET + 1
-               END-COMPUTE    
+               END-COMPUTE
                PERFORM VARYING WS-NEXT FROM WS-NEXT BY 1
                    UNTIL LINE-TO-PARSE(WS-NEXT:1) EQUAL '''' OR '"'
                END-PERFORM
                COMPUTE WS-CHARS =
                    WS-NEXT - KEYWORD-OFFSET + 1
-               END-COMPUTE        
+               END-COMPUTE
            ELSE
                MOVE ZERO TO WS-CHARS
                INSPECT LINE-TO-PARSE
                        (KEYWORD-OFFSET:KEYWORD-SEARCH-LIMIT)
                    TALLYING WS-CHARS FOR CHARACTERS BEFORE INITIAL SPACE
-           END-IF    
+           END-IF
 
-           MOVE LINE-TO-PARSE(KEYWORD-OFFSET:WS-CHARS) 
-               TO TOKEN(TOKEN-IX)    
+           MOVE LINE-TO-PARSE(KEYWORD-OFFSET:WS-CHARS)
+               TO TOKEN(TOKEN-IX)
 
            COMPUTE KEYWORD-OFFSET =
                KEYWORD-OFFSET + WS-CHARS
-           END-COMPUTE               
+           END-COMPUTE
            .
 
        7310-FIND-NEXT-NON-SPACE.
@@ -3772,40 +3773,40 @@
            PERFORM UNTIL NON-SPACE-FOUND
                PERFORM VARYING KEYWORD-OFFSET FROM KEYWORD-OFFSET BY 1
                    UNTIL KEYWORD-OFFSET IS GREATER THAN KEYWORD-END
-                      OR LINE-TO-PARSE(KEYWORD-OFFSET:1) 
+                      OR LINE-TO-PARSE(KEYWORD-OFFSET:1)
                          IS NOT EQUAL TO SPACE
-               END-PERFORM  
+               END-PERFORM
                IF LINE-TO-PARSE(KEYWORD-OFFSET:1) IS NOT EQUAL TO SPACE
                    SET NON-SPACE-FOUND TO TRUE
                ELSE
                    IF SCANNING-TEST-CASES
                        PERFORM 9350-READ-TEST-CASES
-                       MOVE TEST-CASE-LINE TO LINE-TO-PARSE   
+                       MOVE TEST-CASE-LINE TO LINE-TO-PARSE
                    ELSE
                        PERFORM 9460-COPY-ORIGINAL-LINE
                        PERFORM 9250-READ-ORIGINAL-SOURCE
                        MOVE ORIGINAL-LINE TO LINE-TO-PARSE
-                   END-IF    
+                   END-IF
                    MOVE KEYWORD-START TO KEYWORD-OFFSET
-               END-IF            
+               END-IF
            END-PERFORM
            .
 
        7320-FIND-NEXT-SPACE.
            IF LINE-TO-PARSE(KEYWORD-OFFSET:1) IS EQUAL TO SPACE
                SET SPACE-FOUND TO TRUE
-           ELSE    
+           ELSE
                SET NON-SPACE-FOUND TO TRUE
-           END-IF    
+           END-IF
            PERFORM UNTIL SPACE-FOUND
                PERFORM VARYING KEYWORD-OFFSET FROM KEYWORD-OFFSET BY 1
                    UNTIL KEYWORD-OFFSET IS GREATER THAN KEYWORD-END
-                      OR LINE-TO-PARSE(KEYWORD-OFFSET:1) 
+                      OR LINE-TO-PARSE(KEYWORD-OFFSET:1)
                          IS EQUAL TO SPACE
-               END-PERFORM  
+               END-PERFORM
                IF LINE-TO-PARSE(KEYWORD-OFFSET:1) IS EQUAL TO SPACE
                    SET SPACE-FOUND TO TRUE
-               END-IF            
+               END-IF
            END-PERFORM
            .
 
@@ -3814,15 +3815,15 @@
       * Look for a specific keyword on the current input line.
       *****************************************************************
            PERFORM VARYING KEYWORD-OFFSET FROM KEYWORD-OFFSET BY 1
-                   UNTIL KEYWORD-OFFSET IS GREATER THAN 
+                   UNTIL KEYWORD-OFFSET IS GREATER THAN
                          KEYWORD-END
-                      OR KEYWORD-MATCHED  
+                      OR KEYWORD-MATCHED
                IF KEYWORD-TO-MATCH IS EQUAL TO
                    LINE-TO-PARSE(KEYWORD-OFFSET:KEYWORD-MATCH-LENGTH)
                    SET KEYWORD-MATCHED TO TRUE
                END-IF
-           END-PERFORM    
-           .    
+           END-PERFORM
+           .
 
        7500-INIT-KEYWORD-SEARCH.
       *****************************************************************
@@ -3837,13 +3838,13 @@
       *****************************************************************
       * Position pointers for next keyword/token search.
       *****************************************************************
-           COMPUTE KEYWORD-OFFSET = 
+           COMPUTE KEYWORD-OFFSET =
                KEYWORD-OFFSET + KEYWORD-LENGTH(KEYWORD-IX) - 1
            END-COMPUTE
 
            COMPUTE KEYWORD-SEARCH-LIMIT =
                KEYWORD-END - KEYWORD-OFFSET
-           END-COMPUTE    
+           END-COMPUTE
            .
 
        7640-SET-SAVE-ORIG-LINES.
@@ -3863,7 +3864,7 @@
       *****************************************************************
            MOVE ORIGINAL-LINE TO SAVED-LINE(SAVED-LINE-IX)
            SET SAVED-LINE-IX UP BY 1
-           .    
+           .
 
        7700-PERIOD-ON-THIS-LINE.
       *****************************************************************
@@ -3876,7 +3877,7 @@
            ELSE
                SET NOT-END-OF-STATEMENT TO TRUE
            END-IF
-           .            
+           .
 
        7800-STRIP-PERIOD.
       *****************************************************************
@@ -3889,8 +3890,8 @@
                INSPECT TOKEN(TOKEN-IX) REPLACING ALL '. ' BY '  '
            ELSE
                SET TOKEN-HAS-NO-PERIOD(TOKEN-IX) TO TRUE
-           END-IF        
-           .    
+           END-IF
+           .
 
        7900-STRIP-QUOTES.
       *****************************************************************
@@ -3900,8 +3901,8 @@
                INSPECT TOKEN(TOKEN-IX) REPLACING ALL '"' BY SPACE
                INSPECT TOKEN(TOKEN-IX) REPLACING ALL "'" BY SPACE
                MOVE TOKEN(TOKEN-IX)(2:79) TO TOKEN(TOKEN-IX)(1:79)
-           END-IF    
-           .    
+           END-IF
+           .
 
        7950-ENCLOSE-IN-QUOTES.
       *****************************************************************
@@ -3914,8 +3915,8 @@
                RAW-VALUE(1:TEMP-SUB) DELIMITED BY SIZE
                SINGLE-QUOTE          DELIMITED BY SIZE
                INTO QUOTED-VALUE
-           END-STRING    
-           .      
+           END-STRING
+           .
 
        7960-FIND-LENGTH-OF-RAW-VALUE.
       *****************************************************************
@@ -3925,18 +3926,18 @@
            PERFORM VARYING TEMP-SUB FROM LENGTH OF RAW-VALUE BY -1
                    UNTIL TEMP-SUB IS EQUAL TO ZERO
                       OR RAW-VALUE(TEMP-SUB:1) IS NOT EQUAL TO SPACE
-           END-PERFORM           
+           END-PERFORM
            .
 
        7970-INSPECT-REPLACE.
       *****************************************************************
-      * Workaround for older versions of Cobol in which the 
+      * Workaround for older versions of Cobol in which the
       * INSPECT REPLACING verb can't handle strings of different
       * lengths.
       *****************************************************************
-           COMPUTE INSPECT-MAX = 
+           COMPUTE INSPECT-MAX =
                TARGET-STRING-LENGTH - SEARCH-STRING-LENGTH
-           END-COMPUTE    
+           END-COMPUTE
            PERFORM VARYING INSPECT-SUB FROM 1 BY 1
                    UNTIL INSPECT-SUB IS GREATER THAN INSPECT-MAX
 
@@ -3945,29 +3946,29 @@
 
                    COMPUTE CONCAT-OFFSET =
                        INSPECT-SUB + SEARCH-STRING-LENGTH
-                   END-COMPUTE     
+                   END-COMPUTE
 
                    COMPUTE CONCAT-LENGTH =
                        TARGET-STRING-LENGTH - CONCAT-OFFSET
-                   END-COMPUTE       
+                   END-COMPUTE
 
                    COMPUTE CUT-LENGTH =
                        INSPECT-SUB - 1
-                   END-COMPUTE    
+                   END-COMPUTE
 
                    MOVE SPACES TO TEMP-STRING
 
                    STRING
-                       TARGET-STRING(1:CUT-LENGTH) 
+                       TARGET-STRING(1:CUT-LENGTH)
                            DELIMITED BY SIZE
-                       REPLACE-STRING(1:REPLACE-STRING-LENGTH) 
+                       REPLACE-STRING(1:REPLACE-STRING-LENGTH)
                            DELIMITED BY SIZE
                        TARGET-STRING(CONCAT-OFFSET:CONCAT-LENGTH)
                            DELIMITED BY SIZE
-                       INTO TEMP-STRING    
-                   END-STRING  
-                   MOVE TEMP-STRING TO TARGET-STRING      
-               END-IF        
+                       INTO TEMP-STRING
+                   END-STRING
+                   MOVE TEMP-STRING TO TARGET-STRING
+               END-IF
            END-PERFORM
            .
 
@@ -3981,13 +3982,13 @@
            PERFORM VARYING IGNORE-IX FROM 1 BY 1
                    UNTIL IGNORE-IX IS GREATER THAN IGNORE-MAX
                       OR STRING-FOUND
-               MOVE KEYWORD-TO-IGNORE(IGNORE-IX) 
+               MOVE KEYWORD-TO-IGNORE(IGNORE-IX)
                    TO SEARCH-STRING
                MOVE KEYWORD-TO-IGNORE-LENGTH(IGNORE-IX)
                    TO SEARCH-STRING-LENGTH
-               PERFORM 7990-FIND-STRING    
-           END-PERFORM           
-           . 
+               PERFORM 7990-FIND-STRING
+           END-PERFORM
+           .
 
        7990-FIND-STRING.
       *****************************************************************
@@ -3995,18 +3996,18 @@
       * STRING-FOUND to TRUE.
       *****************************************************************
            SET STRING-NOT-FOUND TO TRUE
-           COMPUTE INSPECT-MAX = 
+           COMPUTE INSPECT-MAX =
                TARGET-STRING-LENGTH - SEARCH-STRING-LENGTH
            END-COMPUTE
            IF SEARCH-STRING-LENGTH IS GREATER THAN ZERO
            AND TARGET-STRING-LENGTH IS GREATER THAN ZERO
-             IF TARGET-STRING-LENGTH 
+             IF TARGET-STRING-LENGTH
                    IS LESS THAN OR EQUAL TO SEARCH-STRING-LENGTH
-               IF TARGET-STRING(1:TARGET-STRING-LENGTH) IS EQUAL TO 
+               IF TARGET-STRING(1:TARGET-STRING-LENGTH) IS EQUAL TO
                   SEARCH-STRING(1:TARGET-STRING-LENGTH)
                    SET STRING-FOUND TO TRUE
                END-IF
-             ELSE            
+             ELSE
                IF INSPECT-MAX IS GREATER THAN ZERO
                  PERFORM VARYING INSPECT-SUB FROM 1 BY 1
                        UNTIL INSPECT-SUB IS GREATER THAN INSPECT-MAX
@@ -4017,8 +4018,8 @@
                    END-IF
                  END-PERFORM
                END-IF
-             END-IF  
-           END-IF      
+             END-IF
+           END-IF
            .
 
       *****************************************************************
@@ -4042,8 +4043,8 @@
            MOVE COPYBOOK-NAME TO WS-PROCEDURE-COPY
            PERFORM 9190-CLOSE-UNIT-TEST-CONFIG
            .
-           
-       8200-INITIALIZE-MOCK-HANDLING.        
+
+       8200-INITIALIZE-MOCK-HANDLING.
            INITIALIZE MOCKS
            SET NO-CHECK-FOR-MOCKABLES TO TRUE
            MOVE ZERO TO MOCK-COUNT
@@ -4051,7 +4052,7 @@
            SET FILE-IX TO 1
            MOVE SPACES TO INITIALIZATION-STATEMENTS
            SET INITIALIZATION-IX TO 1
-           .    
+           .
 
       *****************************************************************
       * 9xxx - Input/Output
@@ -4062,7 +4063,7 @@
       * 9x10 - OPEN
       * 9x50 - READ / WRITE
       * 9x90 - CLOSE
-      * 9xxx - other 
+      * 9xxx - other
       *****************************************************************
 
       *****************************************************************
@@ -4081,7 +4082,7 @@
                     MOVE UNIT-TEST-CONFIG-STATUS TO
                          MSG-CONFIG-FILE-STATUS
                     MOVE OPEN-VERB TO MSG-CONFIG-FILE-OPERATION
-                    DISPLAY THIS-PROGRAM MSG-CONFIG-FILE-ERROR    
+                    DISPLAY THIS-PROGRAM MSG-CONFIG-FILE-ERROR
            END-EVALUATE
            .
 
@@ -4096,7 +4097,7 @@
            END-IF
            .
 
-       9190-CLOSE-UNIT-TEST-CONFIG.    
+       9190-CLOSE-UNIT-TEST-CONFIG.
            CLOSE UNIT-TEST-CONFIG
            .
 
@@ -4113,28 +4114,28 @@
                WHEN ORIGINAL-SOURCE-NOT-READABLE
                     DISPLAY THIS-PROGRAM MSG-ORIG-SOURCE-UNREADABLE
                WHEN OTHER
-                    MOVE ORIGINAL-SOURCE-STATUS 
+                    MOVE ORIGINAL-SOURCE-STATUS
                          TO MSG-ORIG-SOURCE-STATUS
                     MOVE OPEN-VERB TO MSG-ORIG-SOURCE-OPERATION
-                    DISPLAY THIS-PROGRAM MSG-ORIG-SOURCE-ERROR   
+                    DISPLAY THIS-PROGRAM MSG-ORIG-SOURCE-ERROR
            END-EVALUATE
            .
 
        9240-READ-AND-COPY-ORIG-SOURCE.
            PERFORM 9250-READ-ORIGINAL-SOURCE
            PERFORM 9460-COPY-ORIGINAL-LINE
-           .    
+           .
 
        9250-READ-ORIGINAL-SOURCE.
            READ ORIGINAL-SOURCE
            IF ORIGINAL-LINE IS EQUAL TO LOW-VALUES
                MOVE SPACES TO ORIGINAL-LINE
-           END-IF    
+           END-IF
            EVALUATE TRUE
                WHEN ORIGINAL-SOURCE-STATUS-OK
                     IF SAVE-ORIGINAL-LINES
                         PERFORM 7650-SAVE-ORIG-LINE
-                    END-IF     
+                    END-IF
                WHEN ORIGINAL-SOURCE-END-OF-FILE
                     SET NOT-FIRST-TOKEN TO TRUE
                     PERFORM VARYING TEMP-SUB FROM 12 BY 1
@@ -4145,15 +4146,15 @@
                     END-PERFORM
                     IF NOT-FIRST-TOKEN
                         WRITE TEST-LINE FROM PARAGRAPH-END-MARKER
-                    END-IF            
+                    END-IF
                WHEN OTHER
-                    MOVE ORIGINAL-SOURCE-STATUS 
+                    MOVE ORIGINAL-SOURCE-STATUS
                          TO MSG-ORIG-SOURCE-STATUS
                     MOVE READ-VERB TO MSG-ORIG-SOURCE-OPERATION
-                    DISPLAY MSG-ORIG-SOURCE-ERROR  
+                    DISPLAY MSG-ORIG-SOURCE-ERROR
                     PERFORM 9290-CLOSE-ORIGINAL-SOURCE
                     PERFORM 9490-CLOSE-TEST-SOURCE
-                    GOBACK    
+                    GOBACK
            END-EVALUATE
            .
 
@@ -4186,19 +4187,19 @@
                    PERFORM 9360-NEXT-TEST-CASE-RECORD
                ELSE
                    SET NO-SUPPRESS-TEST-CASE-READ TO TRUE
-               END-IF    
+               END-IF
            END-IF
            .
 
-       9360-NEXT-TEST-CASE-RECORD.    
-           PERFORM WITH TEST AFTER 
+       9360-NEXT-TEST-CASE-RECORD.
+           PERFORM WITH TEST AFTER
                    UNTIL NOT TEST-CASE-COMMENT
                READ TEST-CASES
                IF TEST-CASES-END-OF-FILE
                    SET END-OF-TEST-CASES TO TRUE
                    CONTINUE
-               END-IF    
-           END-PERFORM    
+               END-IF
+           END-PERFORM
            IF TEST-CASES-STATUS-OK OR END-OF-TEST-CASES
                CONTINUE
            ELSE
@@ -4224,7 +4225,7 @@
                WHEN TEST-SOURCE-FILE-NOT-FOUND
                     DISPLAY THIS-PROGRAM MSG-TEST-SOURCE-NOT-FOUND
                WHEN TEST-SOURCE-NOT-WRITABLE
-                    DISPLAY THIS-PROGRAM MSG-TEST-SOURCE-UNWRITABLE            
+                    DISPLAY THIS-PROGRAM MSG-TEST-SOURCE-UNWRITABLE
                WHEN OTHER
                     MOVE TEST-SOURCE-STATUS TO MSG-TEST-SOURCE-STATUS
                     MOVE WRITE-VERB TO MSG-TEST-SOURCE-OPERATION
@@ -4235,35 +4236,35 @@
        9420-WRITE-TEST-LINE.
            IF SAVE-ORIGINAL-LINES
                CONTINUE
-           ELSE    
+           ELSE
                PERFORM 9425-WRITE-TEST-LINE
            END-IF
            .
 
-       9425-WRITE-TEST-LINE.    
+       9425-WRITE-TEST-LINE.
            IF TEST-LINE IS EQUAL TO LOW-VALUES
                MOVE SPACES TO TEST-LINE
-           END-IF    
+           END-IF
 
            IF BEYOND-PROCEDURE-HEADER
                PERFORM 9430-CHECK-FOR-COPY-STMT
                IF IS-FIRST-TOKEN
                    CONTINUE
-               ELSE    
-      * Not a paragraph header         
-                   IF TEST-LINE(8:4) IS EQUAL TO SPACES 
+               ELSE
+      * Not a paragraph header
+                   IF TEST-LINE(8:4) IS EQUAL TO SPACES
                        INSPECT TEST-LINE REPLACING ALL '. ' BY '  '
                    ELSE
-      * A paragraph header             
+      * A paragraph header
                       MOVE TEST-LINE TO TEMP-STATEMENT
                       WRITE TEST-LINE FROM PARAGRAPH-END-MARKER
-                      MOVE TEMP-STATEMENT TO TEST-LINE    
-                   END-IF    
+                      MOVE TEMP-STATEMENT TO TEST-LINE
+                   END-IF
                END-IF
            END-IF
            IF TEST-LINE(8:13) IS EQUAL TO 'PROCEDURE DIV'
                SET BEYOND-PROCEDURE-HEADER TO TRUE
-           END-IF    
+           END-IF
 
            WRITE TEST-LINE
 
@@ -4275,23 +4276,23 @@
                     MOVE WRITE-VERB TO MSG-TEST-SOURCE-OPERATION
                     DISPLAY MSG-TEST-SOURCE-ERROR
            END-EVALUATE
-           .    
+           .
 
        9430-CHECK-FOR-COPY-STMT.
            SET NOT-FIRST-TOKEN TO TRUE
            PERFORM VARYING TEMP-SUB FROM 12 BY 1
                    UNTIL TEMP-SUB IS GREATER THAN KEYWORD-END
                IF TEST-LINE(TEMP-SUB:1) IS NOT EQUAL TO SPACE
-                   IF TEST-LINE(TEMP-SUB:4) 
+                   IF TEST-LINE(TEMP-SUB:4)
                           IS EQUAL TO COPY-KEYWORD
-                      SET IS-FIRST-TOKEN TO TRUE    
+                      SET IS-FIRST-TOKEN TO TRUE
                    END-IF
                    MOVE KEYWORD-END TO TEMP-SUB
-               END-IF                       
+               END-IF
            END-PERFORM
-           .           
+           .
 
-       9440-WRITE-GENERATED-STMTS.    
+       9440-WRITE-GENERATED-STMTS.
       *****************************************************************
       * Insert test code resulting from parsing unit test keywords.
       *****************************************************************
@@ -4300,7 +4301,7 @@
                   OR GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                      IS EQUAL TO SPACES
 
-               MOVE GENERATED-SOURCE-STATEMENT(STATEMENT-IX) 
+               MOVE GENERATED-SOURCE-STATEMENT(STATEMENT-IX)
                    TO RAW-VALUE
                PERFORM 7960-FIND-LENGTH-OF-RAW-VALUE
 
@@ -4321,8 +4322,8 @@
                        MOVE RAW-VALUE TO TEST-LINE
                        PERFORM 9420-WRITE-TEST-LINE
                    END-IF
-      *         END-PERFORM                      
-           END-PERFORM        
+      *         END-PERFORM
+           END-PERFORM
            INITIALIZE GENERATED-SOURCE-STATEMENTS
            .
 
@@ -4364,10 +4365,10 @@
                    OR BEFORE-EACH-STATEMENT(BEFORE-EACH-IX)
                    IS EQUAL TO SPACES
                MOVE BEFORE-EACH-STATEMENT(BEFORE-EACH-IX) TO TEST-LINE
-               PERFORM 9420-WRITE-TEST-LINE    
+               PERFORM 9420-WRITE-TEST-LINE
            END-PERFORM
            MOVE PARAGRAPH-END-MARKER TO TEST-LINE
-           PERFORM 9420-WRITE-TEST-LINE        
+           PERFORM 9420-WRITE-TEST-LINE
            .
 
        9480-WRITE-AFTER-PARAGRAPH.
@@ -4382,11 +4383,11 @@
                    UNTIL AFTER-EACH-IX IS GREATER THAN 50
                    OR AFTER-EACH-STATEMENT(AFTER-EACH-IX)
                    IS EQUAL TO SPACES
-               MOVE AFTER-EACH-STATEMENT(AFTER-EACH-IX) TO TEST-LINE    
+               MOVE AFTER-EACH-STATEMENT(AFTER-EACH-IX) TO TEST-LINE
                PERFORM 9420-WRITE-TEST-LINE
            END-PERFORM
            MOVE PARAGRAPH-END-MARKER TO TEST-LINE
-           PERFORM 9420-WRITE-TEST-LINE        
+           PERFORM 9420-WRITE-TEST-LINE
            .
 
        9485-WRITE-INIT-PARAGRAPH.
@@ -4397,20 +4398,20 @@
       *****************************************************************
            MOVE INIT-PARAGRAPH-HEADER TO TEST-LINE
            PERFORM 9420-WRITE-TEST-LINE
-           MOVE '           MOVE SPACES TO UT-FILE-INFORMATION'
+           MOVE '           MOVE SPACE TO UT-FILE-INFORMATION'
                TO TEST-LINE
            PERFORM 9420-WRITE-TEST-LINE
 
-           PERFORM VARYING INITIALIZATION-IX FROM 1 BY 1
+           PERFORM VARYING INITIALIZATION-IX FROM 2 BY 1
                    UNTIL INITIALIZATION-IX IS GREATER THAN 50
                    OR INITIALIZATION-STATEMENT(INITIALIZATION-IX)
                    IS EQUAL TO SPACES
-               MOVE INITIALIZATION-STATEMENT(INITIALIZATION-IX) 
-                   TO TEST-LINE    
+               MOVE INITIALIZATION-STATEMENT(INITIALIZATION-IX)
+                   TO TEST-LINE
                PERFORM 9420-WRITE-TEST-LINE
            END-PERFORM
            MOVE PARAGRAPH-END-MARKER TO TEST-LINE
-           PERFORM 9420-WRITE-TEST-LINE      
+           PERFORM 9420-WRITE-TEST-LINE
 
            MOVE END-PARAGRAPH-HEADER TO TEST-LINE
            PERFORM 9420-WRITE-TEST-LINE
@@ -4420,7 +4421,7 @@
 
        9490-CLOSE-TEST-SOURCE.
            CLOSE TEST-SOURCE
-           .    
+           .
 
        9999-END.
            .
